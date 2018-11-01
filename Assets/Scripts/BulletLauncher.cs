@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class BulletLauncher : MonoBehaviour
 {
+	[SerializeField] private GameObject bullet;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start()
+	{
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		
+	void Update()
+	{
+		//test to remove
+		Instantiate(bullet, transform.position, transform.rotation);
+		transform.Rotate(Vector3.forward * 10);
 	}
 }

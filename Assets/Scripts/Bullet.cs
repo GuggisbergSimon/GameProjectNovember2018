@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-	[SerializeField] private float amplitude;
-	[SerializeField] private float phase;
-	[SerializeField] private float speed;
+	[SerializeField] private float speed=10;
 
 	// Use this for initialization
 	void Start()
@@ -16,8 +14,7 @@ public class Bullet : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		transform.position = transform.position +
-		                     (Vector3) (Vector2.up * Mathf.Cos(Time.deltaTime + phase * amplitude) +
-		                                Vector2.right * speed * Time.deltaTime);
+		//to perfect
+		transform.Translate(Vector2.up*speed*Time.deltaTime);
 	}
 }
