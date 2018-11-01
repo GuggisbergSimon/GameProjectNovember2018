@@ -7,44 +7,42 @@ using Debug = UnityEngine.Debug;
 public class Player : MonoBehaviour
 {
 	private Rigidbody2D myRigidbody2D;
+	private int cargo;
+	private float invincibilityTime = 0;
+	private bool isInvincible = false;
+
 	[SerializeField] private float sideSpeed = 0.1f;
-	[SerializeField] private float upForce = 0.1f;
+	[SerializeField] private float upSpeed = 0.1f;
 	[SerializeField] private float jumpSpeed = 1;
 	[SerializeField] private float maxSpeed = 10;
-	[SerializeField] private int cargo = 1000;
+	[SerializeField] private int cargoUpCost = 1;
+	[SerializeField] private int maxCargo = 1000;
 	[SerializeField] private GameManager gameManager;
 
 	private void Start()
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
-	}
-
-	private void FixedUpdate()
-	{
-		if (Input.GetAxis("Vertical") > 0)
-		{
-			Vector2 v = Vector2.up * Input.GetAxis("Vertical") * upForce;
-			myRigidbody2D.AddForce(v);
-		}
-		
-		myRigidbody2D.mass = cargo;
+		cargo = maxCargo;
 	}
 
 	// Update is called once per frame
 	private void Update()
 	{
 		Vector2 myVelocity = myRigidbody2D.velocity;
-		Vector2 h = Vector2.right * Input.GetAxis("Horizontal") * sideSpeed;
-		//Vector2 v = Vector2.up * Input.GetAxis("Vertical") * upSpeed;
-		//myVelocity += v + h;
-		myVelocity += h;
+		Vector2 v = Vector2.zero;
+		if (Input.GetAxis("Vertical") > 0)
+		{
+			v = Vector2.up * Input.GetAxis("Vertical") * upSpeed * Time.deltaTime;
+		}
+
+		Vector2 h = Vector2.right * Input.GetAxis("Horizontal") * sideSpeed * Time.deltaTime;
+		myVelocity += v + h;
 
 		//release cargo
 		if (Input.GetButton("Jump"))
 		{
-			cargo -= 1;
-			Debug.Log(cargo);
-			myVelocity += Vector2.up*jumpSpeed;
+			ReleaseCargo(cargoUpCost);
+			myVelocity += Vector2.up * jumpSpeed * Time.deltaTime;
 		}
 
 		//checks for maxSpeed
@@ -53,9 +51,18 @@ public class Player : MonoBehaviour
 			myVelocity.x = Mathf.Sign(myVelocity.x) * maxSpeed;
 		}
 
-		if (Mathf.Abs(myVelocity.y) > maxSpeed)
+		if (myVelocity.y > maxSpeed)
 		{
 			myVelocity.y = Mathf.Sign(myVelocity.y) * maxSpeed;
+		}
+
+		if (isInvincible)
+		{
+			invincibilityTime -= Time.deltaTime;
+			if (invincibilityTime < 0)
+			{
+				isInvincible = false;
+			}
 		}
 
 		myRigidbody2D.velocity = myVelocity;
@@ -67,13 +74,37 @@ public class Player : MonoBehaviour
 		return cargo;
 	}
 
-	private void OnCollisionEnter2D(Collision2D other)
+	public int GetMaxCargo()
 	{
-		if (other.gameObject.CompareTag("Enemy"))
+		return maxCargo;
+	}
+
+	private void OnTriggerStay2D(Collider2D other)
+	{
+		if (other.gameObject.CompareTag("Enemy") && !isInvincible)
 		{
-			//cargo -= other.gameObject.GetComponent<Pirates>().GetDamage();
-			Destroy(this);
-			gameManager.GameOver();
+			ReleaseCargo(other.gameObject.GetComponent<Pirates>().GetDamage());
 		}
+	}
+
+	private void DeathPlayer()
+	{
+		Destroy(this);
+		gameManager.GameOver();
+	}
+
+	private void ReleaseCargo(int lest)
+	{
+		cargo -= lest;
+		if (cargo <= 0)
+		{
+			DeathPlayer();
+		}
+	}
+
+	private void SetInvincibility(float time)
+	{
+		isInvincible = true;
+		invincibilityTime = time;
 	}
 }

@@ -83,7 +83,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -118,10 +118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf4429d13a3d044e8a5b5fd7db26784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideSpeed: 0.8
-  upSpeed: 2000
+  sideSpeed: 30
+  upSpeed: 20
+  jumpSpeed: 1
   maxSpeed: 10
-  cargo: 100
+  cargoUpCost: 1
+  maxCargo: 1000
   gameManager: {fileID: 0}
 --- !u!212 &212658843248413026
 SpriteRenderer:

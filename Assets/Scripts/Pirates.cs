@@ -15,7 +15,7 @@ public class Pirates : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		Vector2 move = (Vector2) transform.position+Vector2.up*speed;
+		Vector2 move = (Vector2) transform.position+Vector2.up*speed*Time.deltaTime;
 		transform.position = move;
 	}
 
