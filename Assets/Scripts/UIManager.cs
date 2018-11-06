@@ -8,15 +8,15 @@ public class UIManager : MonoBehaviour
 {
 	[SerializeField] private Image cargoGauge;
 	[SerializeField] private Player player;
- 
+
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
-	
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
 		cargoGauge.fillAmount = (float) player.GetCargo() / (float) player.GetMaxCargo();
 	}

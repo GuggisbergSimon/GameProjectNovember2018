@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,13 +23,13 @@ public class GameManager : MonoBehaviour
 	//checks wether the player has pressed the pause button
 	private void CheckPause()
 	{
-		if (Input.GetButtonDown("Fire1") && !isPause)
+		if (Input.GetButtonDown("Jump") && !isPause)
 		{
 			Time.timeScale = 0;
 			panelPause.SetActive(true);
 			isPause = true;
 		}
-		else if (Input.GetButtonDown("Fire1") && isPause)
+		else if (Input.GetButtonDown("Jump") && isPause)
 		{
 			Time.timeScale = 1;
 			panelPause.SetActive(false);
