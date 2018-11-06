@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : Enemy
+public class Rocket : Enemy
 {
 }

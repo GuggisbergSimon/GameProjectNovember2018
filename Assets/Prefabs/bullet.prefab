@@ -111,10 +111,11 @@ MonoBehaviour:
   period: 1
   horizontalPhase: 0
   speed: 0.5
-  angle: 0
+  angleForMovement: 90
   lifeTime: 30
-  damage: 10
-  isDestructibleByPlayer: 0
+  destroyIfInvisible: 1
+  damage: 20
+  isDestructibleByPlayer: 1
 --- !u!212 &212184604433379994
 SpriteRenderer:
   m_ObjectHideFlags: 1

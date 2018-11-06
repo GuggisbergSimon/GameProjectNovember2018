@@ -8,8 +8,9 @@ public class BasicMovable : MonoBehaviour
 	[SerializeField] private float period = 1;
 	[SerializeField] private float horizontalPhase = 0;
 	[SerializeField] private float speed = 0.5f;
-	[SerializeField] private float angle = -90;
+	[SerializeField] private float angleForMovement = 90;
 	[SerializeField] private float lifeTime = 30;
+	[SerializeField] private bool destroyIfInvisible = true;
 
 	private void Start()
 	{
@@ -20,7 +21,7 @@ public class BasicMovable : MonoBehaviour
 	{
 		float y = amplitude * Mathf.Sin((2 * Mathf.PI / period) * (Time.time - horizontalPhase));
 		Vector2 nextPos = Vector2.up * y + Vector2.right * speed;
-		nextPos = Quaternion.Euler(0, 0, angle) * nextPos;
+		nextPos = Quaternion.Euler(0, 0, angleForMovement) * nextPos;
 		transform.Translate(nextPos);
 	}
 
@@ -32,6 +33,9 @@ public class BasicMovable : MonoBehaviour
 
 	private void OnBecameInvisible()
 	{
-		Destroy(gameObject);
+		if (destroyIfInvisible)
+		{
+			Destroy(gameObject);
+		}
 	}
 }

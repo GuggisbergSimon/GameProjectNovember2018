@@ -1145,8 +1145,9 @@ MonoBehaviour:
   period: 1
   horizontalPhase: 0
   speed: 0.05
-  angle: -90
+  angleForMovement: 90
   lifeTime: 30
+  destroyIfInvisible: 1
 --- !u!4 &1350364807
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,11 +1171,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 15.55
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -11.21
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1190,20 +1191,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.60876137
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.7933534
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114940122333705638, guid: 52644f71c64afda4892d705b841ac3fb,
-        type: 2}
-      propertyPath: rotationAngle
-      value: 10
+    - target: {fileID: 1634654253575600, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
+      propertyPath: m_Name
+      value: enemylauncher
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
