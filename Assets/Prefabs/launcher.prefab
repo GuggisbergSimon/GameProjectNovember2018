@@ -111,11 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125b04f77e6c4741b19e4ae46f25d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0
+  amplitude: 2
   period: 1
   horizontalPhase: 0
-  speed: 0
-  angleForMovement: 90
+  speed: 0.5
+  angleForMovement: 0
   lifeTime: 30
   destroyIfInvisible: 1
   damage: 10

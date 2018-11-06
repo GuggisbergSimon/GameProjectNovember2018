@@ -20,15 +20,15 @@ public class Launcher : MonoBehaviour
 		StartCoroutine(Fire(1 / fireRatePerSeconds));
 	}
 
-	/*private void Update()
+	private void Update()
 	{
-		Vector3 line = transform.up * 10;
+		/*Vector3 line = transform.up * 10;
 		Vector3 rotated = Quaternion.AngleAxis(maxAngle, Vector3.forward) * initialPos;
 		Vector3 rotated2 = Quaternion.AngleAxis(-maxAngle, Vector3.forward) * initialPos;
 		Debug.DrawLine(transform.position, transform.position + line, Color.red);
 		Debug.DrawLine(transform.position, transform.position + rotated);
-		Debug.DrawLine(transform.position, transform.position + rotated2);
-	}*/
+		Debug.DrawLine(transform.position, transform.position + rotated2);*/
+	}
 
 	private IEnumerator Fire(float time)
 	{

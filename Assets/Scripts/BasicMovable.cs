@@ -19,7 +19,12 @@ public class BasicMovable : MonoBehaviour
 
 	void Update()
 	{
-		float y = amplitude * Mathf.Sin((2 * Mathf.PI / period) * (Time.time - horizontalPhase));
+		//float y = amplitude * Mathf.Sin((2 * Mathf.PI / period) * (Time.time - horizontalPhase));
+		float y = amplitude * Mathf.Cos(Time.time*period);
+		if (gameObject.name.Contains("launcher"))
+		{
+			Debug.Log(y);
+		}
 		Vector2 nextPos = Vector2.up * y + Vector2.right * speed;
 		nextPos = Quaternion.Euler(0, 0, angleForMovement) * nextPos;
 		transform.Translate(nextPos);

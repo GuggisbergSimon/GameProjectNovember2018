@@ -1205,6 +1205,21 @@ Prefab:
       propertyPath: m_Name
       value: enemylauncher
       objectReference: {fileID: 0}
+    - target: {fileID: 114017446878625102, guid: 52644f71c64afda4892d705b841ac3fb,
+        type: 2}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017446878625102, guid: 52644f71c64afda4892d705b841ac3fb,
+        type: 2}
+      propertyPath: amplitude
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017446878625102, guid: 52644f71c64afda4892d705b841ac3fb,
+        type: 2}
+      propertyPath: period
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
   m_IsPrefabAsset: 0
