@@ -4,44 +4,29 @@ using UnityEngine;
 
 public class Launcher : MonoBehaviour
 {
-	[SerializeField] private float rotationAngle = 10;
-	[SerializeField] private float maxAngle = 45;
+	[SerializeField] private float period = 1;
+	[SerializeField] private float maxAngleRotation = 0;
 	[SerializeField] private GameObject bullet;
 	[SerializeField] private float fireRatePerSeconds = 1;
 
-	private Vector3 initialAngle;
-	
-	//Vector3 initialPos;
-
 	void Start()
 	{
-		//initialPos = transform.up * 10;
-		initialAngle = transform.rotation.eulerAngles;
-		StartCoroutine(Fire(1 / fireRatePerSeconds));
+		StartCoroutine(Fire(1 / fireRatePerSeconds,1,0));
 	}
 
 	private void Update()
 	{
-		/*Vector3 line = transform.up * 10;
-		Vector3 rotated = Quaternion.AngleAxis(maxAngle, Vector3.forward) * initialPos;
-		Vector3 rotated2 = Quaternion.AngleAxis(-maxAngle, Vector3.forward) * initialPos;
-		Debug.DrawLine(transform.position, transform.position + line, Color.red);
-		Debug.DrawLine(transform.position, transform.position + rotated);
-		Debug.DrawLine(transform.position, transform.position + rotated2);*/
+		float phase = Mathf.Sin(Time.time / period);
+		transform.localRotation = Quaternion.Euler(new Vector3(0, 0, phase * maxAngleRotation));
+
+		//Debug.DrawLine(transform.position, transform.position + transform.up * 10, Color.red);
 	}
 
-	private IEnumerator Fire(float time)
+	private IEnumerator Fire(float time, int shots,float angle)
 	{
 		for (;;)
 		{
 			Instantiate(bullet, transform.position, transform.rotation);
-			//TODO bug : correct following line for when then euler angle goes from 350 to 0.
-			if (Mathf.Abs(Mathf.Abs(transform.rotation.eulerAngles.z + rotationAngle) - initialAngle.z) > maxAngle)
-			{
-				rotationAngle = -rotationAngle;
-			}
-
-			transform.Rotate(Vector3.forward * rotationAngle);
 			yield return new WaitForSeconds(time);
 		}
 	}

@@ -37,7 +37,16 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	//triggered when the balloon arrives to the top.
+	//checks for escape button, the alt-f4 alternative
+	private void CheckEsc()
+	{
+		if (Input.GetButtonDown("Cancel"))
+		{
+			Application.Quit();
+		}
+	}
+
+	//triggered when the balloon arrives to the top
 	public void EndLevel()
 	{
 		SceneManager.LoadScene("EndMissionMenu");

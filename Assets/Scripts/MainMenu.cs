@@ -5,15 +5,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
+		CheckPause();
+	}
+
+	private void CheckPause()
+	{
+		if (Input.GetButtonDown("Cancel"))
+		{
+			QuitGame();
+		}
 	}
 
 	public void LoadLevel(String level)

@@ -18,6 +18,6 @@ public class UIManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		cargoGauge.fillAmount = (float) player.GetCargo() / (float) player.GetMaxCargo();
+		cargoGauge.fillAmount = (float) player.Cargo / (float) player.MaxCargo;
 	}
 }

@@ -905,7 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5019608, b: 0.5019608, a: 1}
+  m_Color: {r: 1, g: 0.5019608, b: 0.5019608, a: 0.47058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1108,6 +1108,53 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c61ad1f0a2ec15247a3abbc3df8b5417, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1225733179
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4064402348456912, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064402348456912, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064402348456912, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064402348456912, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064402348456912, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064402348456912, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064402348456912, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064402348456912, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114116048591238906, guid: 78499567e01aa2b45aa3d4bd8e7571b4,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1315337133}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78499567e01aa2b45aa3d4bd8e7571b4, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!114 &1315337133 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114005485602345832, guid: c61ad1f0a2ec15247a3abbc3df8b5417,
@@ -1141,12 +1188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a78905181f99641ba7e74b9879f7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0
+  speed: -0.5
   period: 1
-  horizontalPhase: 0
-  speed: 0.05
-  angleForMovement: 90
-  lifeTime: 30
+  amplitude: 0
+  lifeTime: -1
   destroyIfInvisible: 1
 --- !u!4 &1350364807
 Transform:
@@ -1175,7 +1220,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.4
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1191,11 +1236,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4137983416528230, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_RootOrder
@@ -1203,22 +1248,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1634654253575600, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
       propertyPath: m_Name
-      value: enemylauncher
-      objectReference: {fileID: 0}
-    - target: {fileID: 114017446878625102, guid: 52644f71c64afda4892d705b841ac3fb,
-        type: 2}
-      propertyPath: speed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114017446878625102, guid: 52644f71c64afda4892d705b841ac3fb,
-        type: 2}
-      propertyPath: amplitude
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114017446878625102, guid: 52644f71c64afda4892d705b841ac3fb,
-        type: 2}
-      propertyPath: period
-      value: 1
+      value: autolauncher
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52644f71c64afda4892d705b841ac3fb, type: 2}
@@ -1616,7 +1646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23921569, g: 1, b: 0.23921569, a: 1}
+  m_Color: {r: 0.23921569, g: 1, b: 0.23921569, a: 0.47058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
