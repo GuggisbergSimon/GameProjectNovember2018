@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61272786701874954}
   - component: {fileID: 114173803530663344}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: basic bullet
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,11 +107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b125b04f77e6c4741b19e4ae46f25d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  period: 1
-  amplitude: 0
   lifeTime: 30
   destroyIfInvisible: 1
+  horizontalSpeed: 5
+  period: 1
+  amplitude: 0
   damage: 20
   isDestructibleByPlayer: 1
 --- !u!212 &212184604433379994
