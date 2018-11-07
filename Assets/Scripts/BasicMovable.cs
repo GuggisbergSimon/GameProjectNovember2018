@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class BasicMovable : MonoBehaviour
 {
-	[SerializeField] private float speed = 2.0f;
-	[SerializeField] private float period = 10;
-	[SerializeField] private float amplitude = 1;
 	[SerializeField] private float lifeTime = -1;
 	[SerializeField] private bool destroyIfInvisible = true;
+	[SerializeField] private float horizontalSpeed = 5;
+	[SerializeField] private float period = 1;
+	[SerializeField] private float amplitude = 0;
 
 	private Vector3 axis;
 	private Vector3 pos;
 
-	private void Start()
+	protected void Start()
 	{
 		pos = transform.position;
 		axis = transform.right;
-		
+
 		if (lifeTime > 0)
 		{
 			Destroy(gameObject, lifeTime);
 		}
 	}
 
-	void Update()
+	protected void Update()
 	{
-		pos += transform.up * Time.deltaTime * speed;
+		SinMove();
+	}
+
+	protected void SinMove()
+	{
+		pos += transform.up * Time.deltaTime * horizontalSpeed;
 		transform.position = pos + axis * Mathf.Sin(Time.time * period) * amplitude;
 	}
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,16 +11,9 @@ public class Player : MonoBehaviour
 	private SpriteRenderer image;
 	private float capSpeed;
 	private int cargo;
-	public int Cargo
-	{
-		get { return cargo; }
-	}
-	[SerializeField] private int maxCargo = 1000;
-	public int MaxCargo
-	{
-		get { return maxCargo; }
-	}
 
+	[SerializeField] private int maxCargo = 1000;
+	[SerializeField] private Image cargoGauge;
 	[SerializeField] private float sideSpeed = 0.1f;
 	[SerializeField] private float upSpeed = 0.1f;
 	[SerializeField] private float maxSpeed = 20;
@@ -103,6 +97,8 @@ public class Player : MonoBehaviour
 		{
 			DeathPlayer();
 		}
+
+		cargoGauge.fillAmount = (float) cargo / (float) maxCargo;
 	}
 
 	private IEnumerator SetInvincibility(float time)

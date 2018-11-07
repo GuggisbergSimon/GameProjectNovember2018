@@ -8,16 +8,17 @@ public class GameManager : MonoBehaviour
 	private bool isPause = false;
 
 	[SerializeField] private GameObject panelPause;
-
-	// Use this for initialization
-	void Start()
-	{
-	}
+	[SerializeField] private float timeMax=10;
 
 	// Update is called once per frame
 	void Update()
 	{
 		CheckPause();
+
+		if (Time.time>timeMax)
+		{
+			EndLevel();
+		}
 	}
 
 	//checks wether the player has pressed the pause button
@@ -34,15 +35,6 @@ public class GameManager : MonoBehaviour
 			Time.timeScale = 1;
 			panelPause.SetActive(false);
 			isPause = false;
-		}
-	}
-
-	//checks for escape button, the alt-f4 alternative
-	private void CheckEsc()
-	{
-		if (Input.GetButtonDown("Cancel"))
-		{
-			Application.Quit();
 		}
 	}
 

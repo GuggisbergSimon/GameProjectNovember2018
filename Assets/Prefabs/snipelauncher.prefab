@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4064402348456912}
-  - component: {fileID: 114955674943045086}
+  - component: {fileID: 114567595593040634}
   m_Layer: 0
   m_Name: snipelauncher
   m_TagString: Untagged
@@ -35,10 +35,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4460319996255526}
-  - component: {fileID: 114116048591238906}
-  - component: {fileID: 114375067819989300}
+  - component: {fileID: 114723515130239488}
   m_Layer: 0
-  m_Name: Rocket
+  m_Name: launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +53,7 @@ GameObject:
   - component: {fileID: 4377001265074940}
   - component: {fileID: 212984681347789406}
   m_Layer: 0
-  m_Name: white
+  m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450239727028082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4460319996255526}
@@ -101,19 +100,29 @@ Transform:
   m_Father: {fileID: 4064402348456912}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114116048591238906
+--- !u!114 &114567595593040634
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452677072803874}
+  m_GameObject: {fileID: 1450239727028082}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 361b213af0bed2446a86cbb2f3ca15b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: -1
+  destroyIfInvisible: 1
+  horizontalSpeed: 0
+  period: 1
+  amplitude: 0
+  damage: 10
+  isDestructibleByPlayer: 0
   player: {fileID: 0}
---- !u!114 &114375067819989300
+  speed: 0
+  distanceMinimum: 7
+  noTurn: 0
+--- !u!114 &114723515130239488
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,26 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e322d35f1e6fa24699a23a7c74096c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  period: 1
+  periodRotation: 1
   maxAngleRotation: 0
   bullet: {fileID: 1056707511796162, guid: 739a17b7027d31e4a803261271e19850, type: 2}
-  fireRatePerSeconds: 1
---- !u!114 &114955674943045086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1450239727028082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a78905181f99641ba7e74b9879f7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  period: 10
-  amplitude: 0
-  lifeTime: -1
-  destroyIfInvisible: 1
+  delayTime: 0.01
+  fireRatePerSeconds: 1.8
 --- !u!212 &212984681347789406
 SpriteRenderer:
   m_ObjectHideFlags: 1
