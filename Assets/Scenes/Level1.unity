@@ -953,17 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe9689ca2b48d44cac661b2db6f4a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patterns:
-  - {fileID: 1148898101988458, guid: ecc67441e8f612b43834d7d77c41f758, type: 2}
-  - {fileID: 1087197776483742, guid: 6bf60c26bb6029f46bfc528d01becb35, type: 2}
-  - {fileID: 1148898101988458, guid: ecc67441e8f612b43834d7d77c41f758, type: 2}
-  - {fileID: 1087197776483742, guid: 6bf60c26bb6029f46bfc528d01becb35, type: 2}
-  - {fileID: 1148898101988458, guid: ecc67441e8f612b43834d7d77c41f758, type: 2}
-  - {fileID: 1087197776483742, guid: 6bf60c26bb6029f46bfc528d01becb35, type: 2}
-  - {fileID: 1148898101988458, guid: ecc67441e8f612b43834d7d77c41f758, type: 2}
-  - {fileID: 1087197776483742, guid: 6bf60c26bb6029f46bfc528d01becb35, type: 2}
-  - {fileID: 1148898101988458, guid: ecc67441e8f612b43834d7d77c41f758, type: 2}
-  - {fileID: 1087197776483742, guid: 6bf60c26bb6029f46bfc528d01becb35, type: 2}
+  patterns: []
   panelPause: {fileID: 337288640}
   timeMax: 40
 --- !u!1 &1081577442

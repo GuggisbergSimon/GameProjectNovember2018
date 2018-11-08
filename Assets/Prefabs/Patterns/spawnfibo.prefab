@@ -54,6 +54,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 114173803530663344, guid: 13526de80af1e7b4ab7acd897a1e2bc5,
     type: 2}
   numberShots: 15
+  turns: 1
   radius: 15
   interval: 0.2
   player: {fileID: 0}

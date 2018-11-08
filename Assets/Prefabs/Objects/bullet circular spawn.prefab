@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61272786701874954}
   - component: {fileID: 114173803530663344}
   m_Layer: 0
-  m_Name: bullet for circle spawn
+  m_Name: bullet circular spawn
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

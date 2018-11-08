@@ -6,6 +6,7 @@ public class SpawnCircle : MonoBehaviour
 {
 	[SerializeField] private Enemy bulletPrefab;
 	[SerializeField] private int numberShots;
+	[SerializeField] private int turns = 1;
 	[SerializeField] private float radius;
 	[SerializeField] private float interval;
 	[SerializeField] private Player player;
@@ -33,7 +34,7 @@ public class SpawnCircle : MonoBehaviour
 	//Fire and wait interval time
 	private IEnumerator FireAndWait(float time)
 	{
-		for (int i = 0; i < numberShots; i++)
+		for (int i = 0; i < numberShots*turns; i++)
 		{
 			FireSingle();
 			yield return new WaitForSeconds(time);
