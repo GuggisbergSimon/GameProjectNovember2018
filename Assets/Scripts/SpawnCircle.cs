@@ -5,19 +5,18 @@ using UnityEngine.Experimental.Rendering;
 
 public class SpawnCircle : MonoBehaviour
 {
-	[SerializeField] private Enemy bullet;
+	[SerializeField] private Enemy bulletPrefab;
 	[SerializeField] private int numberShots;
 	[SerializeField] private float radius;
 	[SerializeField] private float interval;
 	[SerializeField] private Player player;
-
-	// Use this for initialization
+	
 	private void Start()
 	{
 		transform.position = player.transform.position;
 		if (interval > 0)
 		{
-			StartCoroutine(FireAndWait());
+			StartCoroutine(FireAndWait(interval));
 		}
 		else
 		{
@@ -28,19 +27,21 @@ public class SpawnCircle : MonoBehaviour
 		}
 	}
 
-	private IEnumerator FireAndWait()
+	//Fire and wait interval time
+	private IEnumerator FireAndWait(float time)
 	{
 		for (int i = 0; i < numberShots; i++)
 		{
 			FireSingle();
-			yield return new WaitForSeconds(interval);
+			yield return new WaitForSeconds(time);
 		}
 	}
 
+	//Fire and then rotate this object
 	private void FireSingle()
 	{
 
-		Instantiate(bullet, transform.up * -radius, transform.rotation);
+		Instantiate(bulletPrefab, transform.up * -radius, transform.rotation);
 		transform.Rotate(transform.forward, (float)360 / (float)numberShots);
 	}
 }

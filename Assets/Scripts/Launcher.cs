@@ -6,7 +6,7 @@ public class Launcher : MonoBehaviour
 {
 	[SerializeField] private float periodRotation = 1;
 	[SerializeField] private float maxAngleRotation = 0;
-	[SerializeField] private GameObject bullet;
+	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private float delayTime=0;
 	[SerializeField] private float fireRatePerSeconds = 1.8f;
 
@@ -32,7 +32,7 @@ public class Launcher : MonoBehaviour
 		yield return new WaitForSeconds(delayTime);
 		for (;;)
 		{
-			Instantiate(bullet, transform.position, transform.rotation);
+			Instantiate(bulletPrefab, transform.position, transform.rotation);
 			yield return new WaitForSeconds(time);
 		}
 	}
