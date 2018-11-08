@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114567595593040634}
   m_Layer: 0
   m_Name: snipelauncher
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   periodRotation: 1
   maxAngleRotation: 0
-  bullet: {fileID: 1056707511796162, guid: 739a17b7027d31e4a803261271e19850, type: 2}
+  bulletPrefab: {fileID: 0}
   delayTime: 0.01
   fireRatePerSeconds: 1.8
 --- !u!212 &212984681347789406
