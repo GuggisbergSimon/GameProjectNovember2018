@@ -49,7 +49,6 @@ public class Player : MonoBehaviour
 		}
 
 		Vector2 nextPos = (v + h) * speed * Time.deltaTime;
-		Debug.Log(nextPos);
 		myRigidbody2D.MovePosition(transform.position + (Vector3) nextPos);
 	}
 

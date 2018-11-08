@@ -12,6 +12,7 @@ public class Follower : Enemy
 	protected new void Start()
 	{
 		player = FindObjectOfType<Player>();
+		Rotate();
 	}
 
 	protected new void Update()

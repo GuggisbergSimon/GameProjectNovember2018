@@ -1,21 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 	private bool isPause = false;
-
+	[SerializeField] private GameObject[] patterns;
 	[SerializeField] private GameObject panelPause;
-	[SerializeField] private float timeMax=10;
+	[SerializeField] private float timeMax = 10;
 
-	// Update is called once per frame
-	void Update()
+	private void Start()
+	{
+		StartCoroutine(Fire());
+	}
+
+	private void Update()
 	{
 		CheckPause();
 
-		if (Time.time>timeMax)
+		if (Time.time > timeMax)
 		{
 			EndLevel();
 		}
@@ -35,6 +41,15 @@ public class GameManager : MonoBehaviour
 			Time.timeScale = 1;
 			panelPause.SetActive(false);
 			isPause = false;
+		}
+	}
+
+	IEnumerator Fire()
+	{
+		for (int i = 0; i < patterns.Length; i++)
+		{
+			Instantiate(patterns[i]);
+			yield return new WaitForSeconds(timeMax / patterns.Length);
 		}
 	}
 
