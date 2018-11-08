@@ -34,10 +34,10 @@ public class BasicMovable : MonoBehaviour
 		pos += transform.up * Time.deltaTime * horizontalSpeed;
 		transform.position = pos + axis * Mathf.Sin(Time.time * period) * amplitude;
 	}
-
+	
 	private void OnBecameInvisible()
 	{
-		if (destroyIfInvisible)
+		if (destroyIfInvisible )
 		{
 			Destroy(gameObject);
 		}

@@ -19,8 +19,6 @@ public class Player : MonoBehaviour
 	[SerializeField] private float maxSpeed = 20;
 	[SerializeField] private float maxInvincibilityTime = 2;
 	[SerializeField] private float InvincibilityBlinkInterval = 0.2f;
-
-
 	[SerializeField] private GameManager gameManager;
 	[SerializeField] private float slowSpeed = 10;
 
