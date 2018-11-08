@@ -19,7 +19,7 @@ public class SpawnLine : MonoBehaviour
 		player = FindObjectOfType<Player>();
 		initialPos = beginning.transform.position;
 
-		//TODO defin angle so that setup is correct
+		//TODO define angle so that setup is correct
 		Vector3 axis = player.transform.position - (Vector3) initialPos;
 
 		if (interval > 0)
@@ -49,7 +49,6 @@ public class SpawnLine : MonoBehaviour
 	//Fire and then move on to the next object
 	private void FireSingle(int shotNumber)
 	{
-		Debug.Log(beginning.transform.position - ending.transform.position);
 		Instantiate(bulletPrefab,
 			(Vector3) initialPos + shotNumber * (ending.transform.position - beginning.transform.position) / numberShots,
 			Quaternion.Euler(0, 0, angle));

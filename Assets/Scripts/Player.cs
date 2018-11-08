@@ -36,8 +36,7 @@ public class Player : MonoBehaviour
 	{
 		Vector2 v = Vector2.up * Input.GetAxis("Vertical");
 		Vector2 h = Vector2.right * Input.GetAxis("Horizontal");
-
-		//TODO reimplement that
+		
 		//set capspeed to slow or max speed wether the related button has been pressed or released
 		if (Input.GetButton("Fire1"))
 		{
