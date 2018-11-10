@@ -6,6 +6,7 @@ public class Enemy : BasicMovable
 {
 	[SerializeField] private int damage = 10;
 	[SerializeField] private bool isDestructibleByPlayer = false;
+	[SerializeField] private float delayBeforeMovement = 0;
 
 	public int GetDamage()
 	{

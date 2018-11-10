@@ -13,7 +13,7 @@ public class BasicMovable : MonoBehaviour
 	private Vector3 axis;
 	private Vector3 pos;
 
-	protected void Start()
+	private void Start()
 	{
 		pos = transform.position;
 		axis = transform.right;
@@ -24,17 +24,18 @@ public class BasicMovable : MonoBehaviour
 		}
 	}
 
-	protected void Update()
+	private void Update()
 	{
+
 		SinMove();
 	}
 
-	protected void SinMove()
+	private void SinMove()
 	{
 		pos += transform.up * Time.deltaTime * horizontalSpeed;
 		transform.position = pos + axis * Mathf.Sin(Time.time * period) * amplitude;
 	}
-	
+
 	private void OnBecameInvisible()
 	{
 		if (destroyIfInvisible )

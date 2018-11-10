@@ -9,13 +9,13 @@ public class Follower : Enemy
 	[SerializeField] private float distanceMinimum = 5;
 	[SerializeField] private bool noTurn = false;
 
-	protected new void Start()
+	private void Start()
 	{
 		player = FindObjectOfType<Player>();
 		Rotate();
 	}
 
-	protected new void Update()
+	private void Update()
 	{
 		CheckClose();
 		Rotate();
