@@ -1070,15 +1070,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4368023202113286, guid: c61ad1f0a2ec15247a3abbc3df8b5417, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4368023202113286, guid: c61ad1f0a2ec15247a3abbc3df8b5417, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4368023202113286, guid: c61ad1f0a2ec15247a3abbc3df8b5417, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4368023202113286, guid: c61ad1f0a2ec15247a3abbc3df8b5417, type: 2}
       propertyPath: m_LocalRotation.w
