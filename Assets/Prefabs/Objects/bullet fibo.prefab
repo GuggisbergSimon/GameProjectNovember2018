@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61272786701874954}
   - component: {fileID: 114689552953729180}
   m_Layer: 0
-  m_Name: bullet circular spawn
+  m_Name: bullet fibo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,12 +108,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  delayTime: 0
+  delayTime: 0.5
   isDestructibleByPlayer: 0
   destroyIfInvisible: 1
-  lifeTime: 2.4
+  lifeTime: 1.5
   horizontalSpeed: 15
-  period: 1
+  frequency: 1
   amplitude: 0
 --- !u!212 &212184604433379994
 SpriteRenderer:

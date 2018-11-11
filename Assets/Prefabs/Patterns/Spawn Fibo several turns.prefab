@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4120305459052574}
   - component: {fileID: 114341951769443052}
   m_Layer: 0
-  m_Name: Spawn Fibo
+  m_Name: Spawn Fibo several turns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 114689552953729180, guid: 13526de80af1e7b4ab7acd897a1e2bc5,
     type: 2}
   numberShots: 30
-  turns: 1
+  turns: 3
   radius: 15
   interval: 0.1
   player: {fileID: 0}

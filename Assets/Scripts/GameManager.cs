@@ -9,18 +9,13 @@ public class GameManager : MonoBehaviour
 	private bool isPause = false;
 	[SerializeField] private GameObject[] patterns;
 	[SerializeField] private GameObject panelPause;
-	[SerializeField] private float timeMax = 10;
-
-	private void Start()
-	{
-		StartCoroutine(Fire());
-	}
+	[SerializeField] private float timeMax = 40;
 
 	private void Update()
 	{
 		CheckPause();
 
-		if (Time.time > timeMax)
+		if (Time.timeSinceLevelLoad > timeMax)
 		{
 			EndLevel();
 		}
@@ -41,15 +36,17 @@ public class GameManager : MonoBehaviour
 			panelPause.SetActive(false);
 			isPause = false;
 		}
+
+		//TODO remove that
+		if (Input.GetButtonDown("Submit"))
+		{
+			SceneManager.LoadScene("MainMenu");
+		}
 	}
 
-	IEnumerator Fire()
+	public void Fire(int index)
 	{
-		for (int i = 0; i < patterns.Length; i++)
-		{
-			Instantiate(patterns[i]);
-			yield return new WaitForSeconds(timeMax / patterns.Length);
-		}
+		Instantiate(patterns[index]);
 	}
 
 	//triggered when the balloon arrives to the top

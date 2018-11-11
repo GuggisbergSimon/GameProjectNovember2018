@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4213610388303122}
   - component: {fileID: 114207650653848312}
   m_Layer: 0
-  m_Name: LineBulletBottomLtoR
+  m_Name: Line Bullet Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,9 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301d395f4c72a224d98aad4099087e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 114173803530663344, guid: 739a17b7027d31e4a803261271e19850,
+  bulletPrefab: {fileID: 114811802990621016, guid: 10d71861ffb7b3e41a496ea9922612f5,
     type: 2}
-  numberShots: 5
+  numberShots: 15
   interval: 0
   beginning: {fileID: 1447467199069804}
   ending: {fileID: 1962505094187408}
