@@ -2,34 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Launcher : MonoBehaviour
+public class Launcher : Enemy
 {
 	[SerializeField] private float periodRotation = 1;
 	[SerializeField] private float maxAngleRotation = 0;
 	[SerializeField] private GameObject bulletPrefab;
-	[SerializeField] private float delayTime=0;
 	[SerializeField] private float fireRatePerSeconds = 1.8f;
 
 	private float initAngle;
+	private bool isLaunching = false;
+	private float timer = 0.0f;
 
-	private void Start()
+	private new void Start()
 	{
-		initAngle=transform.rotation.eulerAngles.z;
-		StartCoroutine(Fire(1 / fireRatePerSeconds, 1, 0));
+		base.Start();
+		initAngle = transform.rotation.eulerAngles.z;
 	}
 
 	private void Update()
 	{
-		float phase = Mathf.Sin((Time.time / periodRotation));
-		transform.localRotation = Quaternion.Euler(new Vector3(0, 0, initAngle+(phase * maxAngleRotation)));
+		if (canMove)
+		{
+			timer += Time.deltaTime;
+			float phase = Mathf.Sin((timer / periodRotation));
+			transform.localRotation = Quaternion.Euler(new Vector3(0, 0, initAngle + (phase * maxAngleRotation)));
+			if (!isLaunching)
+			{
+				StartCoroutine(Fire(1 / fireRatePerSeconds));
+			}
+		}
 
-		//TODO remove that line
-		//Debug.DrawLine(transform.position, transform.position + transform.up * 10, Color.red);
+		Debug.DrawLine(transform.position, transform.position + transform.up * 10, Color.red);
 	}
 
-	private IEnumerator Fire(float time, int shots, float angle)
+	private IEnumerator Fire(float time)
 	{
-		yield return new WaitForSeconds(delayTime);
+		isLaunching = true;
 		for (;;)
 		{
 			Instantiate(bulletPrefab, transform.position, transform.rotation);

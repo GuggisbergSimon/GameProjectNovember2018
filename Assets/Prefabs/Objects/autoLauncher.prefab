@@ -35,27 +35,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4137983416528230}
-  - component: {fileID: 114462050510734144}
   - component: {fileID: 70147350493986276}
+  - component: {fileID: 114186130245122622}
   m_Layer: 0
   m_Name: autoLauncher
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1658406885238478
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4841412214507598}
-  - component: {fileID: 114412067211002408}
-  m_Layer: 0
-  m_Name: launcher
-  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,26 +64,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1634654253575600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.78, y: -8.61, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4006385109397108}
-  - {fileID: 4841412214507598}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4841412214507598
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1658406885238478}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4137983416528230}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &70147350493986276
 CapsuleCollider2D:
@@ -116,24 +86,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.03, y: 1.03}
   m_Direction: 0
---- !u!114 &114412067211002408
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1658406885238478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e322d35f1e6fa24699a23a7c74096c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  periodRotation: 1
-  maxAngleRotation: 20
-  bulletPrefab: {fileID: 1056707511796162, guid: 739a17b7027d31e4a803261271e19850,
-    type: 2}
-  delayTime: 0
-  fireRatePerSeconds: 5
---- !u!114 &114462050510734144
+--- !u!114 &114186130245122622
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,16 +94,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1634654253575600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b125b04f77e6c4741b19e4ae46f25d48, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e322d35f1e6fa24699a23a7c74096c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: -1
-  destroyIfInvisible: 1
-  horizontalSpeed: 1
-  period: 1
-  amplitude: 2
   damage: 10
+  delayTime: 0
   isDestructibleByPlayer: 0
+  destroyIfInvisible: 1
+  lifeTime: -1
+  periodRotation: 1
+  maxAngleRotation: 20
+  bulletPrefab: {fileID: 1056707511796162, guid: 739a17b7027d31e4a803261271e19850,
+    type: 2}
+  fireRatePerSeconds: 1.8
 --- !u!212 &212185355205858138
 SpriteRenderer:
   m_ObjectHideFlags: 1

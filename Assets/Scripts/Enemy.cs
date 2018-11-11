@@ -2,19 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : BasicMovable
+public class Enemy : MonoBehaviour
 {
 	[SerializeField] private int damage = 10;
+	[SerializeField] private float delayTime = 0.0f;
 	[SerializeField] private bool isDestructibleByPlayer = false;
-	[SerializeField] private float delayBeforeMovement = 0;
+	[SerializeField] private bool destroyIfInvisible = true;
+	[SerializeField] private float lifeTime = -1.0f;
 
-	public int GetDamage()
+	protected bool canMove = false;
+
+	protected void Start()
 	{
-		return damage;
+		if (lifeTime > 0)
+		{
+			Destroy(gameObject, lifeTime);
+		}
+		StartCoroutine(DelayMove(delayTime));
 	}
 
-	public bool IsDestructibleByPlayer()
+	public int Damage
 	{
-		return isDestructibleByPlayer;
+		get { return damage; }
+	}
+
+	public bool IsDestructibleByPlayer
+	{
+		get { return isDestructibleByPlayer; }
+	}
+
+	private IEnumerator DelayMove(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		canMove = true;
+	}
+
+	//TODO To Test properly
+	private void OnBecameInvisible()
+	{
+		if (destroyIfInvisible)
+		{
+			Destroy(gameObject);
+		}
 	}
 }

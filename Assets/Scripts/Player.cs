@@ -56,10 +56,10 @@ public class Player : MonoBehaviour
 		if (other.gameObject.CompareTag("Enemy") && !isInvincible)
 		{
 			Enemy enemy = other.gameObject.GetComponent<Enemy>();
-			ReleaseCargo(enemy.GetDamage());
+			ReleaseCargo(enemy.Damage);
 			StartCoroutine(SetInvincibility(maxInvincibilityTime));
 
-			if (enemy.IsDestructibleByPlayer())
+			if (enemy.IsDestructibleByPlayer)
 			{
 				Destroy(other.gameObject);
 			}

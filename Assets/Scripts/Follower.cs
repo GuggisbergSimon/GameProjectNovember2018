@@ -5,12 +5,13 @@ using UnityEngine;
 public class Follower : Enemy
 {
 	[SerializeField] private Player player;
-	[SerializeField] private float speed = 5;
-	[SerializeField] private float distanceMinimum = 5;
+	[SerializeField] private float speed = 5.0f;
+	[SerializeField] private float distanceMinimum = 5.0f;
 	[SerializeField] private bool noTurn = false;
 
-	private void Start()
+	private new void Start()
 	{
+		base.Start();
 		player = FindObjectOfType<Player>();
 		Rotate();
 	}
@@ -19,8 +20,10 @@ public class Follower : Enemy
 	{
 		CheckClose();
 		Rotate();
-
-		transform.Translate(Vector3.up * speed * Time.deltaTime);
+		if (canMove)
+		{
+			transform.Translate(Vector3.up * speed * Time.deltaTime);
+		}
 	}
 
 	private void CheckClose()
