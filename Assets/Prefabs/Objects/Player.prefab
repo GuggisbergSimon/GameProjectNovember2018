@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4dbb39beec9db44bb9d7ad91dd2ef4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCargo: 1000
+  maxCargo: 50
   cargoGauge: {fileID: 0}
-  maxSpeed: 100
+  maxSpeed: 15
   slowSpeed: 5
   maxInvincibilityTime: 2
   InvincibilityBlinkInterval: 0.2

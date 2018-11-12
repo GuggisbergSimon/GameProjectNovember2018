@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 		Vector2 v = Vector2.up * Input.GetAxis("Vertical");
 		Vector2 h = Vector2.right * Input.GetAxis("Horizontal");
 		
-		//set capspeed to slow or max speed wether the related button has been pressed or released
+		//set speed to slow or max speed wether the related button has been pressed or released
 		if (Input.GetButton("Fire1"))
 		{
 			speed = slowSpeed;
@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
 		myRigidbody2D.MovePosition(transform.position + (Vector3) nextPos);
 	}
 
+	// Handle the "collision" between the player and enemy with the tag enemy
+	//there are no real collisions in this game, only triggers
 	private void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Enemy") && !isInvincible)
@@ -72,7 +74,7 @@ public class Player : MonoBehaviour
 		Destroy(gameObject);
 		gameManager.GameOver();
 	}
-
+	
 	//handle when the player release some cargo
 	private void ReleaseCargo(int lest)
 	{

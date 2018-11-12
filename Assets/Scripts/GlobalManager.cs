@@ -30,7 +30,11 @@ public class GlobalManager : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Cancel"))
 		{
-			Application.Quit();
+#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+#else
+		Application.Quit();
+#endif
 		}
 	}
 }

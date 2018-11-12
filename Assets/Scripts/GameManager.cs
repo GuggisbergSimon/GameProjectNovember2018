@@ -17,30 +17,27 @@ public class GameManager : MonoBehaviour
 
 		if (Time.timeSinceLevelLoad > timeMax)
 		{
-			EndLevel();
+			LoadLevel("EndMissionMenu");
 		}
 	}
 
 	//checks wether the player has pressed the pause button
 	private void CheckPause()
 	{
-		if (Input.GetButtonDown("Jump") && !isPause)
+		if (Input.GetButtonDown("Jump"))
 		{
-			Time.timeScale = 0;
-			panelPause.SetActive(true);
-			isPause = true;
-		}
-		else if (Input.GetButtonDown("Jump") && isPause)
-		{
-			Time.timeScale = 1;
-			panelPause.SetActive(false);
-			isPause = false;
-		}
-
-		//TODO remove that
-		if (Input.GetButtonDown("Submit"))
-		{
-			SceneManager.LoadScene("MainMenu");
+			if (isPause)
+			{
+				Time.timeScale = 1;
+				panelPause.SetActive(false);
+				isPause = false;
+			}
+			else
+			{
+				Time.timeScale = 0;
+				panelPause.SetActive(true);
+				isPause = true;
+			}
 		}
 	}
 
@@ -49,10 +46,9 @@ public class GameManager : MonoBehaviour
 		Instantiate(patterns[index]);
 	}
 
-	//triggered when the balloon arrives to the top
-	public void EndLevel()
+	public void LoadLevel(string name)
 	{
-		SceneManager.LoadScene("EndMissionMenu");
+		SceneManager.LoadScene(name);
 	}
 
 	//triggered when the player's Cargo is equal to 0
