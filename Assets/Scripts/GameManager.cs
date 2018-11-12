@@ -1,28 +1,57 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-	// Use this for initialization
-	void Start()
+	private bool isPause = false;
+	[SerializeField] private GameObject[] patterns;
+	[SerializeField] private GameObject panelPause;
+	[SerializeField] private float timeMax = 40;
+
+	private void Update()
 	{
+		CheckPause();
+
+		if (Time.timeSinceLevelLoad > timeMax)
+		{
+			LoadLevel("EndMissionMenu");
+		}
 	}
 
-	// Update is called once per frame
-	void Update()
+	//checks wether the player has pressed the pause button
+	private void CheckPause()
 	{
+		if (Input.GetButtonDown("Jump"))
+		{
+			if (isPause)
+			{
+				Time.timeScale = 1;
+				panelPause.SetActive(false);
+				isPause = false;
+			}
+			else
+			{
+				Time.timeScale = 0;
+				panelPause.SetActive(true);
+				isPause = true;
+			}
+		}
 	}
 
-	//triggered when the balloon arrives to the top.
-	public void EndLevel()
+	public void Fire(int index)
 	{
-		SceneManager.LoadScene("EndMissionMenu");
+		Instantiate(patterns[index]);
 	}
 
-	//triggered when the player's Cargo = 0
+	public void LoadLevel(string name)
+	{
+		SceneManager.LoadScene(name);
+	}
+
+	//triggered when the player's Cargo is equal to 0
 	public void GameOver()
 	{
 		SceneManager.LoadScene("GameOverMenu");

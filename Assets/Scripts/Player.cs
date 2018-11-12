@@ -1,79 +1,114 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
 	private Rigidbody2D myRigidbody2D;
-	[SerializeField] private float sideSpeed = 0.1f;
-	[SerializeField] private float upForce = 0.1f;
-	[SerializeField] private float jumpSpeed = 1;
+	private bool isInvincible = false;
+	private SpriteRenderer image;
+	private float speed;
+	private int cargo;
+
+	[SerializeField] private int maxCargo = 1000;
+	[SerializeField] private Image cargoGauge;
 	[SerializeField] private float maxSpeed = 10;
-	[SerializeField] private int cargo = 1000;
+	[SerializeField] private float slowSpeed = 5;
+	[SerializeField] private float maxInvincibilityTime = 2;
+	[SerializeField] private float InvincibilityBlinkInterval = 0.2f;
 	[SerializeField] private GameManager gameManager;
 
 	private void Start()
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
-	}
-
-	private void FixedUpdate()
-	{
-		if (Input.GetAxis("Vertical") > 0)
+		image = GetComponentInChildren<SpriteRenderer>();
+		cargo = maxCargo;
+		speed = maxSpeed;
+		if (InvincibilityBlinkInterval > maxInvincibilityTime)
 		{
-			Vector2 v = Vector2.up * Input.GetAxis("Vertical") * upForce;
-			myRigidbody2D.AddForce(v);
+			InvincibilityBlinkInterval = maxInvincibilityTime;
 		}
-		
-		myRigidbody2D.mass = cargo;
 	}
 
 	// Update is called once per frame
 	private void Update()
 	{
-		Vector2 myVelocity = myRigidbody2D.velocity;
-		Vector2 h = Vector2.right * Input.GetAxis("Horizontal") * sideSpeed;
-		//Vector2 v = Vector2.up * Input.GetAxis("Vertical") * upSpeed;
-		//myVelocity += v + h;
-		myVelocity += h;
-
-		//release cargo
-		if (Input.GetButton("Jump"))
+		Vector2 v = Vector2.up * Input.GetAxis("Vertical");
+		Vector2 h = Vector2.right * Input.GetAxis("Horizontal");
+		
+		//set speed to slow or max speed wether the related button has been pressed or released
+		if (Input.GetButton("Fire1"))
 		{
-			cargo -= 1;
-			Debug.Log(cargo);
-			myVelocity += Vector2.up*jumpSpeed;
+			speed = slowSpeed;
+		}
+		else if (Input.GetButtonUp("Fire1"))
+		{
+			speed = maxSpeed;
 		}
 
-		//checks for maxSpeed
-		if (Mathf.Abs(myVelocity.x) > maxSpeed)
-		{
-			myVelocity.x = Mathf.Sign(myVelocity.x) * maxSpeed;
-		}
-
-		if (Mathf.Abs(myVelocity.y) > maxSpeed)
-		{
-			myVelocity.y = Mathf.Sign(myVelocity.y) * maxSpeed;
-		}
-
-		myRigidbody2D.velocity = myVelocity;
-		Debug.DrawLine(transform.position, transform.position + (Vector3) myVelocity, Color.red, 120);
+		Vector2 nextPos = (v + h) * speed * Time.deltaTime;
+		myRigidbody2D.MovePosition(transform.position + (Vector3) nextPos);
 	}
 
-	public int GetCargo()
+	// Handle the "collision" between the player and enemy with the tag enemy
+	//there are no real collisions in this game, only triggers
+	private void OnTriggerStay2D(Collider2D other)
 	{
-		return cargo;
+		if (other.gameObject.CompareTag("Enemy") && !isInvincible)
+		{
+			Enemy enemy = other.gameObject.GetComponent<Enemy>();
+			ReleaseCargo(enemy.Damage);
+			StartCoroutine(SetInvincibility(maxInvincibilityTime));
+
+			if (enemy.IsDestructibleByPlayer)
+			{
+				Destroy(other.gameObject);
+			}
+		}
 	}
 
-	private void OnCollisionEnter2D(Collision2D other)
+	//handle the death of the player
+	private void DeathPlayer()
 	{
-		if (other.gameObject.CompareTag("Enemy"))
+		Destroy(gameObject);
+		gameManager.GameOver();
+	}
+	
+	//handle when the player release some cargo
+	private void ReleaseCargo(int lest)
+	{
+		cargo -= lest;
+		if (cargo <= 0)
 		{
-			//cargo -= other.gameObject.GetComponent<Pirates>().GetDamage();
-			Destroy(this);
-			gameManager.GameOver();
+			DeathPlayer();
 		}
+
+		cargoGauge.fillAmount = (float) cargo / (float) maxCargo;
+	}
+
+	private IEnumerator SetInvincibility(float time)
+	{
+		isInvincible = true;
+
+		for (float i = 0; i <= time; i += InvincibilityBlinkInterval)
+		{
+			//make the sprite of the player blink via changing the value of alpha channel
+			Color tempColor = image.color;
+			if (tempColor.a.CompareTo(1.0f) == 0)
+			{
+				tempColor.a = 0.0f;
+			}
+			else
+			{
+				tempColor.a = 1.0f;
+			}
+
+			image.color = tempColor;
+			yield return new WaitForSeconds(InvincibilityBlinkInterval);
+		}
+
+		image.color = Color.white;
+		isInvincible = false;
 	}
 }

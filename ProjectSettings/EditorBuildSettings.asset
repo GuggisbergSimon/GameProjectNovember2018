@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndMissionMenu.unity
     guid: d8ba1aeb2669b6c42b1c11b3fc2ff263
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 8fc6b28748e46a44bb53ed8ef18e632f
   m_configObjects: {}
