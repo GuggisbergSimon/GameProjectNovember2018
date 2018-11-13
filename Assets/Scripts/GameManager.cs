@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject[] patterns;
 	[SerializeField] private GameObject panelPause;
 	[SerializeField] private float timeMax = 40;
+	[SerializeField] private CloudSpawner cloudSpawner;
 
 	private void Update()
 	{
@@ -55,5 +56,10 @@ public class GameManager : MonoBehaviour
 	public void GameOver()
 	{
 		SceneManager.LoadScene("GameOverMenu");
+	}
+
+	public void ChangeColor(int index)
+	{
+		cloudSpawner.ChangeColor(index);
 	}
 }
