@@ -1111,8 +1111,8 @@ MonoBehaviour:
   - {fileID: 1869445933943508, guid: 8fe1ec8bebeb1de4f8e0a6acf17cc16f, type: 2}
   - {fileID: 1244241456959760, guid: 3a50739dc8d0b0d40bb50e541a133dcd, type: 2}
   - {fileID: 1849403275916648, guid: f30c3df9ca1cf3145aad807e0bfce1c8, type: 2}
-  delayStart: 2
-  minInterval: 1
+  delayStart: 0
+  minInterval: 0.5
   maxInterval: 4
   leftMaxPos: {fileID: 728664966}
   rightMaxPos: {fileID: 1997464079}
