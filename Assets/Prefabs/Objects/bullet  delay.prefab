@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4462236361122564}
   - component: {fileID: 212469552253247032}
+  - component: {fileID: 114857106607475064}
   m_Layer: 0
   m_Name: sprite
   m_TagString: Untagged
@@ -110,11 +111,21 @@ MonoBehaviour:
   damage: 10
   delayTime: 1
   isDestructibleByPlayer: 0
-  destroyIfInvisible: 1
   lifeTime: 10
   horizontalSpeed: 15
   frequency: 1
   amplitude: 0
+--- !u!114 &114857106607475064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794862372159026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e86d1121f4f1f40be7059aa811acc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212469552253247032
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Cloud : MonoBehaviour
+public class Cloud : BasicObject
 {
 	[SerializeField] private Sprite[] sprites;
 	[SerializeField] private float speed = 10;
@@ -12,15 +12,17 @@ public class Cloud : MonoBehaviour
 	private SpriteRenderer mySpriteRender;
 
 	//Select a random mesh between the ones given in the inspector
-	private void Start()
+	private new void Start()
 	{
+		base.Start();
 		mySpriteRender = GetComponentInChildren<SpriteRenderer>();
 		ChangeSprite(Random.Range(0, sprites.Length - 1));
 		speed += Random.Range(-margeSpeed, margeSpeed);
 	}
 
-	private void Update()
+	private new void Update()
 	{
+		base.Update();
 		transform.position = transform.position + Vector3.down * speed * Time.deltaTime;
 	}
 

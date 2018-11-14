@@ -16,8 +16,9 @@ public class Follower : Enemy
 		Rotate();
 	}
 
-	private void Update()
+	private new void Update()
 	{
+		base.Update();
 		CheckClose();
 		Rotate();
 		if (canMove)

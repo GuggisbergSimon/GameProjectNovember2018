@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4006385109397108}
   - component: {fileID: 212185355205858138}
+  - component: {fileID: 114761929932511772}
   m_Layer: 0
   m_Name: sprite
   m_TagString: Untagged
@@ -100,13 +101,24 @@ MonoBehaviour:
   damage: 10
   delayTime: 0
   isDestructibleByPlayer: 0
-  destroyIfInvisible: 1
   lifeTime: -1
   periodRotation: 1
   maxAngleRotation: 20
   bulletPrefab: {fileID: 1056707511796162, guid: 739a17b7027d31e4a803261271e19850,
     type: 2}
   fireRatePerSeconds: 1.8
+  noAngleLimit: 0
+--- !u!114 &114761929932511772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142808887645882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e86d1121f4f1f40be7059aa811acc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212185355205858138
 SpriteRenderer:
   m_ObjectHideFlags: 1

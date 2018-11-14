@@ -34,7 +34,7 @@ public class CloudSpawner : MonoBehaviour
 		{
 			var x = Random.Range(leftMaxPos.transform.position.x, rightMaxPos.transform.position.x);
 			var y = Random.Range(leftMaxPos.transform.position.y, rightMaxPos.transform.position.y);
-			Instantiate(currentCloud, new Vector2(x, y), transform.rotation);
+			Instantiate(currentCloud, new Vector2(x, y), transform.rotation,transform);
 			yield return new WaitForSeconds(Random.Range(minInterval, maxInterval));
 		}
 	}

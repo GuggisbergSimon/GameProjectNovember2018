@@ -20,8 +20,9 @@ public class Launcher : Enemy
 		initAngle = transform.rotation.eulerAngles.z;
 	}
 
-	private void Update()
+	private new void Update()
 	{
+		base.Update();
 		if (canMove)
 		{
 			timer += Time.deltaTime;
