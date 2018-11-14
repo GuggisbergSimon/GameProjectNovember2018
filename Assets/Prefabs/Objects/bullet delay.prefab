@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 61390491985604920}
   - component: {fileID: 114811802990621016}
   m_Layer: 0
-  m_Name: bullet  delay
+  m_Name: bullet delay
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

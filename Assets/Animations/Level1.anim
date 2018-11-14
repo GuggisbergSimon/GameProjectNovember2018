@@ -114,12 +114,12 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 3
+  - time: 2.9666667
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 4
     messageOptions: 0
   - time: 4.9166665
     functionName: ChangeColor
@@ -128,12 +128,12 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 6.016667
+  - time: 7.5666666
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 4
+    intParameter: 0
     messageOptions: 0
   - time: 9
     functionName: Fire
