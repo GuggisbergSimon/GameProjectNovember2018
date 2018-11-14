@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4168170590000840}
   - component: {fileID: 114448695284788112}
   m_Layer: 0
-  m_Name: FollowerLineBottomLtoR
+  m_Name: Follower Line Bottom LtoR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

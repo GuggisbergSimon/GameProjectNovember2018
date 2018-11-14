@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
 		cargoGauge.fillAmount = (float) cargo / (float) maxCargo;
 	}
 
+	//Handle the invincibility process and its blinking
 	private IEnumerator SetInvincibility(float time)
 	{
 		isInvincible = true;

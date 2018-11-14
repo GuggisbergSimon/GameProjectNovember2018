@@ -40,7 +40,7 @@ public class SpawnLine : MonoBehaviour
 	}
 
 
-	//Fire and then move on to the next object
+	//Calculate the position for the shot and then proceeds to fire, rotating the object based on the position of the player.
 	private void FireSingle(int shotNumber)
 	{
 		Vector3 posSpawn = beginning.transform.position +
