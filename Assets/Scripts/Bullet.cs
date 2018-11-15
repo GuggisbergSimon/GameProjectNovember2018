@@ -8,19 +8,20 @@ public class Bullet : Enemy
 	[SerializeField] private float frequency = 1.0f;
 	[SerializeField] private float amplitude = 0.0f;
 
-	private Vector3 axis;
-	private Vector3 pos;
+	private Vector3 initialAxis;
+	private Vector3 initialPosition;
 	private float timer = 0.0f;
 
 	private new void Start()
 	{
 		base.Start();
-		pos = transform.position;
-		axis = transform.right;
+		initialPosition = transform.position;
+		initialAxis = transform.right;
 	}
 
-	private void Update()
+	private new void Update()
 	{
+		base.Update();
 		if (canMove)
 		{
 			SinMove();
@@ -30,7 +31,7 @@ public class Bullet : Enemy
 
 	private void SinMove()
 	{
-		pos += transform.up * Time.deltaTime * horizontalSpeed;
-		transform.position = pos + axis * Mathf.Sin(timer * frequency) * amplitude;
+		initialPosition += transform.up * Time.deltaTime * horizontalSpeed;
+		transform.position = initialPosition + initialAxis * Mathf.Sin(timer * frequency) * amplitude;
 	}
 }

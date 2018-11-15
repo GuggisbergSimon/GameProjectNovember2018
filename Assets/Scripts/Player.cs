@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class Player : MonoBehaviour
 {
@@ -10,19 +11,28 @@ public class Player : MonoBehaviour
 	private SpriteRenderer image;
 	private float speed;
 	private int cargo;
+	private CinemachineVirtualCamera vcam;
+	private CinemachineBasicMultiChannelPerlin noise;
+	private Animator myAnimator;
 
 	[SerializeField] private int maxCargo = 1000;
 	[SerializeField] private Image cargoGauge;
-	[SerializeField] private float maxSpeed = 10;
-	[SerializeField] private float slowSpeed = 5;
-	[SerializeField] private float maxInvincibilityTime = 2;
+	[SerializeField] private float maxSpeed = 10.0f;
+	[SerializeField] private float slowSpeed = 5.0f;
+	[SerializeField] private float maxInvincibilityTime = 2.0f;
 	[SerializeField] private float InvincibilityBlinkInterval = 0.2f;
+	[SerializeField] private float timeShaking = 0.5f;
 	[SerializeField] private GameManager gameManager;
+	[SerializeField] private AnimationClip explosionAnimation;
 
 	private void Start()
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 		image = GetComponentInChildren<SpriteRenderer>();
+		vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+		noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+		myAnimator = GetComponentInChildren<Animator>();
+
 		cargo = maxCargo;
 		speed = maxSpeed;
 		if (InvincibilityBlinkInterval > maxInvincibilityTime)
@@ -58,7 +68,9 @@ public class Player : MonoBehaviour
 		if (other.gameObject.CompareTag("Enemy") && !isInvincible)
 		{
 			Enemy enemy = other.gameObject.GetComponent<Enemy>();
-			ReleaseCargo(enemy.Damage);
+			int damageTaken = enemy.Damage;
+			ReleaseCargo(damageTaken);
+			StartCoroutine(SetShaking(damageTaken, damageTaken, timeShaking));
 			StartCoroutine(SetInvincibility(maxInvincibilityTime));
 
 			if (enemy.IsDestructibleByPlayer)
@@ -69,8 +81,12 @@ public class Player : MonoBehaviour
 	}
 
 	//handle the death of the player
-	private void DeathPlayer()
+	private IEnumerator DeathPlayer()
 	{
+		myAnimator.SetTrigger("Death");
+		yield return new WaitForSeconds(explosionAnimation.length);
+		image.color = Color.clear;
+
 		Destroy(gameObject);
 		gameManager.GameOver();
 	}
@@ -81,12 +97,13 @@ public class Player : MonoBehaviour
 		cargo -= lest;
 		if (cargo <= 0)
 		{
-			DeathPlayer();
+			StartCoroutine(DeathPlayer());
 		}
-
-		cargoGauge.fillAmount = (float) cargo / (float) maxCargo;
+		
+		cargoGauge.fillAmount = (float) cargo / maxCargo;
 	}
 
+	//Handle the invincibility process and its blinking
 	private IEnumerator SetInvincibility(float time)
 	{
 		isInvincible = true;
@@ -107,8 +124,21 @@ public class Player : MonoBehaviour
 			image.color = tempColor;
 			yield return new WaitForSeconds(InvincibilityBlinkInterval);
 		}
-
 		image.color = Color.white;
+
 		isInvincible = false;
+	}
+
+	private IEnumerator SetShaking(float amplitudeGain, float frequencyGain, float time)
+	{
+		ShakeCamera(amplitudeGain,frequencyGain);
+		yield return new WaitForSeconds(time);
+		ShakeCamera(0,0);
+	}
+
+	private void ShakeCamera(float amplitudeGain, float frequencyGain)
+	{
+		noise.m_AmplitudeGain = amplitudeGain;
+		noise.m_FrequencyGain = frequencyGain;
 	}
 }

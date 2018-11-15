@@ -8,6 +8,7 @@ public class Launcher : Enemy
 	[SerializeField] private float maxAngleRotation = 0;
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private float fireRatePerSeconds = 1.8f;
+	[SerializeField] private bool noAngleLimit = false;
 
 	private float initAngle;
 	private bool isLaunching = false;
@@ -19,12 +20,17 @@ public class Launcher : Enemy
 		initAngle = transform.rotation.eulerAngles.z;
 	}
 
-	private void Update()
+	private new void Update()
 	{
+		base.Update();
 		if (canMove)
 		{
 			timer += Time.deltaTime;
-			float phase = Mathf.Sin((timer / periodRotation));
+			float phase = Mathf.Sin(timer / periodRotation);
+			if (noAngleLimit)
+			{
+				phase = Time.timeSinceLevelLoad*periodRotation;
+			}
 			transform.localRotation = Quaternion.Euler(new Vector3(0, 0, initAngle + (phase * maxAngleRotation)));
 			if (!isLaunching)
 			{

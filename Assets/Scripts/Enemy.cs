@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+//basic class defining how enemies act and interact
+public class Enemy : BasicObject
 {
 	[SerializeField] private int damage = 10;
 	[SerializeField] private float delayTime = 0.0f;
 	[SerializeField] private bool isDestructibleByPlayer = false;
-	[SerializeField] private bool destroyIfInvisible = true;
 	[SerializeField] private float lifeTime = -1.0f;
 
 	protected bool canMove = false;
 
-	protected void Start()
+	protected new void Start()
 	{
+		base.Start();
 		if (lifeTime > 0)
 		{
 			Destroy(gameObject, lifeTime);
 		}
+
 		StartCoroutine(DelayMove(delayTime));
 	}
 
@@ -35,14 +37,5 @@ public class Enemy : MonoBehaviour
 	{
 		yield return new WaitForSeconds(delay);
 		canMove = true;
-	}
-
-	//TODO To Test properly
-	private void OnBecameInvisible()
-	{
-		if (destroyIfInvisible)
-		{
-			Destroy(gameObject);
-		}
 	}
 }

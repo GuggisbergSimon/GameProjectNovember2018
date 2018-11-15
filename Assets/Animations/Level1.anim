@@ -29,7 +29,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 40.083332
+        time: 40.333332
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -65,7 +65,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 40.083332
+    m_StopTime: 40.333332
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -94,7 +94,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 40.083332
+        time: 40.333332
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -114,19 +114,26 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 3
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 6.016667
+  - time: 2.9666667
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 4
+    messageOptions: 0
+  - time: 4.9166665
+    functionName: ChangeColor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 7.5666666
+    functionName: Fire
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
     messageOptions: 0
   - time: 9
     functionName: Fire
@@ -142,6 +149,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 9.95
+    functionName: ChangeColor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
   - time: 12.016666
     functionName: Fire
     data: 
@@ -149,12 +163,19 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 15.033334
+  - time: 14.866667
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
+    messageOptions: 0
+  - time: 14.95
+    functionName: ChangeColor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
     messageOptions: 0
   - time: 16.5
     functionName: Fire
@@ -170,7 +191,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 20
+  - time: 19.95
+    functionName: ChangeColor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 4
+    messageOptions: 0
+  - time: 20.116667
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -179,6 +207,13 @@ AnimationClip:
     messageOptions: 0
   - time: 23.016666
     functionName: Fire
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 5
+    messageOptions: 0
+  - time: 25.016666
+    functionName: ChangeColor
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -197,4 +232,18 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
+    messageOptions: 0
+  - time: 29.983334
+    functionName: ChangeColor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 6
+    messageOptions: 0
+  - time: 35.016666
+    functionName: ChangeColor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
     messageOptions: 0
