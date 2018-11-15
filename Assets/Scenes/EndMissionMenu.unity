@@ -167,7 +167,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'You came to the end of this short game
+  m_text: 'Thus one more player succeeded.
 
     Thank you for playing.
 
@@ -241,10 +241,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 415172873}
-    characterCount: 89
+    characterCount: 82
     spriteCount: 0
-    spaceCount: 18
-    wordCount: 18
+    spaceCount: 14
+    wordCount: 14
     linkCount: 0
     lineCount: 4
     pageCount: 1

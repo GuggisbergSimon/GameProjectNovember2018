@@ -6,9 +6,9 @@ using UnityEngine;
 public class CloudSpawner : MonoBehaviour
 {
 	[SerializeField] private GameObject[] clouds;
-	[SerializeField] private float delayStart = 0;
-	[SerializeField] private float minInterval = 1;
-	[SerializeField] private float maxInterval = 4;
+	[SerializeField] private float delayStart = 0.0f;
+	[SerializeField] private float minInterval = 1.0f;
+	[SerializeField] private float maxInterval = 4.0f;
 	[SerializeField] private GameObject leftMaxPos;
 	[SerializeField] private GameObject rightMaxPos;
 
@@ -30,7 +30,7 @@ public class CloudSpawner : MonoBehaviour
 	{
 		yield return new WaitForSeconds(delayStart);
 
-		for (;;)
+		for (int i=0;;i++)
 		{
 			var x = Random.Range(leftMaxPos.transform.position.x, rightMaxPos.transform.position.x);
 			var y = Random.Range(leftMaxPos.transform.position.y, rightMaxPos.transform.position.y);

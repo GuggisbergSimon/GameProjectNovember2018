@@ -35,7 +35,6 @@ public class Enemy : BasicObject
 
 	private IEnumerator DelayMove(float delay)
 	{
-		Debug.Log(delay);
 		yield return new WaitForSeconds(delay);
 		canMove = true;
 	}

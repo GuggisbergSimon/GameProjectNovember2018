@@ -7,7 +7,7 @@ public class Cloud : BasicObject
 {
 	[SerializeField] private Sprite[] sprites;
 	[SerializeField] private float speed = 10;
-	[SerializeField] private float margeSpeed = 1;
+	[SerializeField] private float margeSpeed = 2;
 
 	private SpriteRenderer mySpriteRender;
 
@@ -18,6 +18,7 @@ public class Cloud : BasicObject
 		mySpriteRender = GetComponentInChildren<SpriteRenderer>();
 		ChangeSprite(Random.Range(0, sprites.Length - 1));
 		speed += Random.Range(-margeSpeed, margeSpeed);
+		mySpriteRender.sortingOrder = (int) speed;
 	}
 
 	private new void Update()

@@ -64,7 +64,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1661406563266650}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
@@ -118,12 +118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4dbb39beec9db44bb9d7ad91dd2ef4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCargo: 50
+  maxCargo: 30
   cargoGauge: {fileID: 0}
   maxSpeed: 15
   slowSpeed: 5
   maxInvincibilityTime: 2
   InvincibilityBlinkInterval: 0.1
+  timeShaking: 0.5
   gameManager: {fileID: 0}
 --- !u!212 &212658843248413026
 SpriteRenderer:
