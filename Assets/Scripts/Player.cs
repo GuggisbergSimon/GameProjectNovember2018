@@ -7,6 +7,7 @@ using UnityEngine.Experimental.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
+	private AudioSource myAudioSource;
 	private Rigidbody2D myRigidbody2D;
 	private bool isInvincible = false;
 	private float speed;
@@ -26,9 +27,11 @@ public class Player : MonoBehaviour
 	[SerializeField] private GameManager gameManager;
 	[SerializeField] private AnimationClip explosionAnimation;
 	[SerializeField] private GameObject balloonModel;
+	[SerializeField] private AudioClip explosionSound;
 
 	private void Start()
 	{
+		myAudioSource = GetComponent<AudioSource>();
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 		vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
 		noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -83,12 +86,14 @@ public class Player : MonoBehaviour
 	//handle the death of the player
 	private IEnumerator DeathPlayer()
 	{
-		Debug.Log("death entered");
 		isAlive = false;
 		myAnimator.SetTrigger("Death");
-		yield return new WaitForSeconds(explosionAnimation.length);
+		myAudioSource.clip = explosionSound;
+		myAudioSource.loop = false;
+		myAudioSource.volume = 1.0f;
+		myAudioSource.Play();
 		balloonModel.SetActive(false);
-		//image.color = Color.clear;
+		yield return new WaitForSeconds(explosionAnimation.length);
 
 		Destroy(gameObject);
 		gameManager.GameOver();
@@ -98,7 +103,7 @@ public class Player : MonoBehaviour
 	private void ReleaseCargo(int lest)
 	{
 		cargo -= lest;
-		if (cargo <= 0)
+		if (cargo <= 0 && isAlive)
 		{
 			StartCoroutine(DeathPlayer());
 		}
