@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	private bool isPause = false;
+
 	[SerializeField] private GameObject[] patterns;
 	[SerializeField] private GameObject panelPause;
 	[SerializeField] private float timeMax = 40;
 	[SerializeField] private CloudSpawner cloudSpawner;
-
+	
 	private void Update()
 	{
 		CheckPause();
@@ -22,16 +23,18 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	//checks wether the player has pressed the pause button
+	//handles the pause system
 	private void CheckPause()
 	{
 		if (Input.GetButtonDown("Jump"))
 		{
 			if (isPause)
 			{
+
 				Time.timeScale = 1;
 				panelPause.SetActive(false);
 				isPause = false;
+
 			}
 			else
 			{
@@ -51,8 +54,7 @@ public class GameManager : MonoBehaviour
 	{
 		SceneManager.LoadScene(name);
 	}
-
-	//triggered when the player's Cargo is equal to 0
+	
 	public void GameOver()
 	{
 		SceneManager.LoadScene("GameOverMenu");

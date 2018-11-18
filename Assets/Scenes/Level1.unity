@@ -687,6 +687,11 @@ Prefab:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1073835544}
+    - target: {fileID: 114179552583625888, guid: f1ea3f6100465d9449e9bc55ef21cc79,
+        type: 2}
+      propertyPath: maxCargo
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1ea3f6100465d9449e9bc55ef21cc79, type: 2}
   m_IsPrefabAsset: 0
@@ -1665,6 +1670,11 @@ Prefab:
     - target: {fileID: 1399869348260948, guid: 77ab91bb772ec6c4cb3ce5c26ebde9b1, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114745196971352636, guid: 77ab91bb772ec6c4cb3ce5c26ebde9b1,
+        type: 2}
+      propertyPath: speed
+      value: 9.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ab91bb772ec6c4cb3ce5c26ebde9b1, type: 2}
