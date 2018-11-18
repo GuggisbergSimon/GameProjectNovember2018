@@ -172,7 +172,9 @@ MonoBehaviour:
     Thank you for playing.
 
 
-    Game by Ataor aka @strueux'
+    Game by Simon Guggisberg
+
+    Air balloon by Larissa de Barros'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78d7cbc169fd921409d15b46dcf33fd8, type: 2}
   m_sharedMaterial: {fileID: 21533641704380204, guid: 78d7cbc169fd921409d15b46dcf33fd8,
@@ -241,12 +243,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 415172873}
-    characterCount: 82
+    characterCount: 113
     spriteCount: 0
-    spaceCount: 14
-    wordCount: 14
+    spaceCount: 19
+    wordCount: 19
     linkCount: 0
-    lineCount: 4
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
