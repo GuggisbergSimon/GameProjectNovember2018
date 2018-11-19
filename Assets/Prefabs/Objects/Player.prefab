@@ -2664,7 +2664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4dbb39beec9db44bb9d7ad91dd2ef4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCargo: 10
+  maxCargo: 40
   cargoGauge: {fileID: 0}
   maxSpeed: 15
   slowSpeed: 5

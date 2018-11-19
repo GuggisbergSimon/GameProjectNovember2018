@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject panelPause;
 	[SerializeField] private float timeMax = 40;
 	[SerializeField] private CloudSpawner cloudSpawner;
-	
+
 	private void Update()
 	{
 		CheckPause();
@@ -45,23 +45,23 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void Fire(int index)
+	public void Fire(GameObject pattern)
 	{
-		Instantiate(patterns[index]);
+		Instantiate(pattern);
+	}
+
+	public void ChangeColor(int index)
+	{
+		cloudSpawner.ChangeColor(index);
 	}
 
 	public void LoadLevel(string name)
 	{
 		SceneManager.LoadScene(name);
 	}
-	
+
 	public void GameOver()
 	{
 		SceneManager.LoadScene("GameOverMenu");
-	}
-
-	public void ChangeColor(int index)
-	{
-		cloudSpawner.ChangeColor(index);
 	}
 }

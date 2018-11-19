@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4120305459052574}
   - component: {fileID: 114341951769443052}
   m_Layer: 0
-  m_Name: Spawn Fibo several turns
+  m_Name: Spawn Fibo cyclone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,10 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84dc4c4e2d9d324281e3a7d7ca80342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 114689552953729180, guid: 13526de80af1e7b4ab7acd897a1e2bc5,
+  bulletPrefab: {fileID: 114689552953729180, guid: 5e17528ca1eedcb469e8df2e659ef40c,
     type: 2}
-  numberShots: 30
+  numberShots: 80
   turns: 3
   radius: 15
-  interval: 0.1
+  interval: 0.0001
   player: {fileID: 0}
