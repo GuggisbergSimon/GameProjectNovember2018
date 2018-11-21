@@ -47,11 +47,13 @@ public class GameManager : MonoBehaviour
 
 	public void Fire(GameObject pattern)
 	{
+		Debug.Log(pattern.name);
 		Instantiate(pattern);
 	}
 
 	public void ChangeColor(int index)
 	{
+		Debug.Log(index);
 		cloudSpawner.ChangeColor(index);
 	}
 
