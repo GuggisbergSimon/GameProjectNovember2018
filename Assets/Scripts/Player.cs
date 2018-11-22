@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 	[SerializeField] private AnimationClip explosionAnimation;
 	[SerializeField] private GameObject balloonModel;
 	[SerializeField] private AudioClip explosionSound;
+	[SerializeField] private float timeScaleSlowDown = 0.7f;
 
 	private void Start()
 	{
@@ -55,10 +56,12 @@ public class Player : MonoBehaviour
 		if (Input.GetButton("Fire1"))
 		{
 			speed = slowSpeed;
+			Time.timeScale = timeScaleSlowDown;
 		}
 		else if (Input.GetButtonUp("Fire1"))
 		{
 			speed = maxSpeed;
+			Time.timeScale = 1.0f;
 		}
 
 		Vector2 nextPos = (v + h) * speed * Time.deltaTime;

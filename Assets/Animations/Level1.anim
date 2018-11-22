@@ -551,15 +551,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 5
     messageOptions: 0
-  - time: 54
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 1416268556104746, guid: 524e1a75d92202f488b1bfb31d1cb184,
-      type: 2}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 54.133335
+  - time: 51.1
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 1148898101988458, guid: 13e19c14ed319a14696a629d2eb2e7ba,
@@ -567,7 +559,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 56.933334
+  - time: 52.05
+    functionName: Fire
+    data: 
+    objectReferenceParameter: {fileID: 1416268556104746, guid: 524e1a75d92202f488b1bfb31d1cb184,
+      type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 54.016666
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 1769039011591838, guid: 75472ede5f68fcb4c84ed0f8acc9e5e8,
@@ -575,7 +575,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 57.016666
+  - time: 54.05
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 1087197776483742, guid: 6bf60c26bb6029f46bfc528d01becb35,
@@ -583,7 +583,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 58.833332
+  - time: 56.05
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 1561740423498042, guid: b26287b4ea4cc2c428098c945161483f,
@@ -591,18 +591,18 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 59.416668
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 1561740423498042, guid: b26287b4ea4cc2c428098c945161483f,
-      type: 2}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 59.516666
+  - time: 58.033333
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 1087197776483742, guid: 6bf60c26bb6029f46bfc528d01becb35,
+      type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 58.116665
+    functionName: Fire
+    data: 
+    objectReferenceParameter: {fileID: 1561740423498042, guid: b26287b4ea4cc2c428098c945161483f,
       type: 2}
     floatParameter: 0
     intParameter: 0
@@ -664,14 +664,6 @@ AnimationClip:
   - time: 73.083336
     functionName: Fire
     data: 
-    objectReferenceParameter: {fileID: 1769039011591838, guid: 75472ede5f68fcb4c84ed0f8acc9e5e8,
-      type: 2}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 73.083336
-    functionName: Fire
-    data: 
     objectReferenceParameter: {fileID: 1561740423498042, guid: b26287b4ea4cc2c428098c945161483f,
       type: 2}
     floatParameter: 0
@@ -681,6 +673,14 @@ AnimationClip:
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 1416268556104746, guid: 524e1a75d92202f488b1bfb31d1cb184,
+      type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 73.083336
+    functionName: Fire
+    data: 
+    objectReferenceParameter: {fileID: 1769039011591838, guid: 75472ede5f68fcb4c84ed0f8acc9e5e8,
       type: 2}
     floatParameter: 0
     intParameter: 0

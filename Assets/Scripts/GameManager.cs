@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 	//handles the pause system
 	private void CheckPause()
 	{
-		if (Input.GetButtonDown("Jump"))
+		if (Input.GetButtonDown("Submit"))
 		{
 			if (isPause)
 			{
@@ -47,13 +47,11 @@ public class GameManager : MonoBehaviour
 
 	public void Fire(GameObject pattern)
 	{
-		Debug.Log(pattern.name);
 		Instantiate(pattern);
 	}
 
 	public void ChangeColor(int index)
 	{
-		Debug.Log(index);
 		cloudSpawner.ChangeColor(index);
 	}
 
