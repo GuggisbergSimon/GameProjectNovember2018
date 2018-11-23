@@ -10,6 +10,12 @@ public class NavigateMenuWithoutMouse : MonoBehaviour
 
 	private bool buttonSelected;
 
+	private void Start()
+	{
+		eventSystem.SetSelectedGameObject(firstSelectedObject);
+		buttonSelected = true;
+	}
+
 	private void Update()
 	{
 		if ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && buttonSelected == false)

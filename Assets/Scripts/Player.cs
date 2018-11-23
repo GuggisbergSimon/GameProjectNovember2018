@@ -49,27 +49,38 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
-		Vector2 v = Vector2.up * Input.GetAxis("Vertical");
-		Vector2 h = Vector2.right * Input.GetAxis("Horizontal");
-
-		//set speed to slow or max speed wether the related button has been pressed or released
-		if (Input.GetButton("Fire1"))
+		CheckSpecialActions();
+		if (isAlive)
 		{
-			speed = slowSpeed;
+			Move();
+		}
+	}
+
+	//set timescale to slow or normal timescale if the related button has been pressed or released
+	private void CheckSpecialActions()
+	{
+		if (Input.GetButtonDown("Fire1"))
+		{
+			//speed = slowSpeed;
 			Time.timeScale = timeScaleSlowDown;
 		}
 		else if (Input.GetButtonUp("Fire1"))
 		{
-			speed = maxSpeed;
+			//speed = maxSpeed;
 			Time.timeScale = 1.0f;
 		}
+	}
 
+	private void Move()
+	{
+		Vector2 v = Vector2.up * Input.GetAxis("Vertical");
+		Vector2 h = Vector2.right * Input.GetAxis("Horizontal");
 		Vector2 nextPos = (v + h) * speed * Time.deltaTime;
 		myRigidbody2D.MovePosition(transform.position + (Vector3) nextPos);
 	}
 
 	// Handle the "collision" between the player and enemy with the tag enemy
-	//there are no real collisions in this game, only triggers
+	// there are no real collisions in this game, only triggers
 	private void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Enemy") && !isInvincible)
@@ -79,6 +90,7 @@ public class Player : MonoBehaviour
 			ReleaseCargo(damageTaken);
 			StartCoroutine(SetShaking(damageTaken, damageTaken, timeShaking));
 			StartCoroutine(SetInvincibility(maxInvincibilityTime));
+
 			if (enemy.IsDestructibleByPlayer)
 			{
 				Destroy(other.gameObject);

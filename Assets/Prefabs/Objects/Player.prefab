@@ -2670,11 +2670,12 @@ MonoBehaviour:
   slowSpeed: 5
   maxInvincibilityTime: 2
   InvincibilityBlinkInterval: 0.1
-  timeShaking: 0.5
+  timeShaking: 0.7
   gameManager: {fileID: 0}
   explosionAnimation: {fileID: 7400000, guid: 4a0dc169f939be0448b3fd93dc355af6, type: 2}
   balloonModel: {fileID: 1179258275112300}
   explosionSound: {fileID: 8300000, guid: 296e7ba65bff81a448564ecb83bba9ce, type: 3}
+  timeScaleSlowDown: 0.6
 --- !u!212 &212075200601745654
 SpriteRenderer:
   m_ObjectHideFlags: 1
