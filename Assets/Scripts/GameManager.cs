@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
 	private bool isPause = false;
 	private AudioSource myAudioSource;
-	
+
 	[SerializeField] private GameObject panelPause;
 	[SerializeField] private CloudSpawner cloudSpawner;
 	[SerializeField] private AudioClip enablePause;
@@ -45,6 +45,14 @@ public class GameManager : MonoBehaviour
 				myAudioSource.clip = enablePause;
 				myAudioSource.Play();
 			}
+		}
+	}
+
+	public void SetTimeScaleTo(float value)
+	{
+		if (!isPause)
+		{
+			Time.timeScale = value;
 		}
 	}
 

@@ -58,17 +58,18 @@ public class Player : MonoBehaviour
 	}
 
 	//set timescale to slow or normal timescale if the related button has been pressed or released
+	// also adjusts the speed so that this action won't be abused
 	private void CheckSpecialActions()
 	{
 		if (Input.GetButtonDown("Fire1"))
 		{
 			speed = slowSpeed;
-			Time.timeScale = timeScaleSlowDown;
+			gameManager.SetTimeScaleTo(timeScaleSlowDown);
 		}
 		else if (Input.GetButtonUp("Fire1"))
 		{
 			speed = maxSpeed;
-			Time.timeScale = 1.0f;
+			gameManager.SetTimeScaleTo(1.0f);
 		}
 	}
 
@@ -99,7 +100,7 @@ public class Player : MonoBehaviour
 	//handle the death of the player
 	private IEnumerator DeathPlayer()
 	{
-		Time.timeScale = 1.0f;
+		gameManager.SetTimeScaleTo(1.0f);
 		isAlive = false;
 		myAnimator.SetTrigger("Death");
 		myAudioSource.clip = explosionSound;
