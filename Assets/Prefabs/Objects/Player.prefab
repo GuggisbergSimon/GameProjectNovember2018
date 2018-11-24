@@ -2548,7 +2548,7 @@ AudioSource:
   m_GameObject: {fileID: 1023673941517428}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243705899080393038, guid: 794ebdc90f7486f4ca348745d8aefde0,
+  OutputAudioMixerGroup: {fileID: 243067418423975504, guid: 794ebdc90f7486f4ca348745d8aefde0,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 21a73317008cc70449697af3c9d7cb75, type: 3}
   m_PlayOnAwake: 1
@@ -2670,10 +2670,9 @@ MonoBehaviour:
   maxSpeed: 15
   slowSpeed: 10
   maxInvincibilityTime: 2
-  InvincibilityBlinkInterval: 0.1
+  InvincibilityBlinkInterval: 0.05
   timeShaking: 0.7
   gameManager: {fileID: 0}
-  explosionAnimation: {fileID: 7400000, guid: 4a0dc169f939be0448b3fd93dc355af6, type: 2}
   balloonModel: {fileID: 1179258275112300}
   explosionSound: {fileID: 8300000, guid: 72a49f8c056400f44b5369a5b1637a1b, type: 3}
   hitSound: {fileID: 8300000, guid: ba0e549c798e4ec4e93910936fdd6653, type: 3}

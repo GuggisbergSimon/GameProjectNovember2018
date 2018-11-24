@@ -764,11 +764,6 @@ Prefab:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1073835544}
-    - target: {fileID: 114179552583625888, guid: f1ea3f6100465d9449e9bc55ef21cc79,
-        type: 2}
-      propertyPath: InvincibilityBlinkInterval
-      value: 0.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1ea3f6100465d9449e9bc55ef21cc79, type: 2}
   m_IsPrefabAsset: 0
