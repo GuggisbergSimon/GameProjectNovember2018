@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 		{
 			if (isPause)
 			{
-
 				Time.timeScale = 1;
 				panelPause.SetActive(false);
 				isPause = false;
