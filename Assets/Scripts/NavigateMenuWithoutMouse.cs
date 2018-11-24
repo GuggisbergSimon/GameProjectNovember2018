@@ -8,19 +8,19 @@ public class NavigateMenuWithoutMouse : MonoBehaviour
 	[SerializeField] private EventSystem eventSystem;
 	[SerializeField] private GameObject firstSelectedObject;
 
-	private bool buttonSelected;
+	private bool isButtonSelected;
 
 	private void Update()
 	{
-		if ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && buttonSelected == false)
+		if (!isButtonSelected)
 		{
 			eventSystem.SetSelectedGameObject(firstSelectedObject);
-			buttonSelected = true;
+			isButtonSelected = true;
 		}
 	}
 
 	private void OnDisable()
 	{
-		buttonSelected = false;
+		isButtonSelected = false;
 	}
 }

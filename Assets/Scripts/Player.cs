@@ -3,35 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using UnityEngine.Experimental.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
+	private AudioSource myAudioSource;
 	private Rigidbody2D myRigidbody2D;
 	private bool isInvincible = false;
-	private SpriteRenderer image;
 	private float speed;
 	private int cargo;
 	private CinemachineVirtualCamera vcam;
 	private CinemachineBasicMultiChannelPerlin noise;
 	private Animator myAnimator;
+	private bool isAlive = true;
 
 	[SerializeField] private int maxCargo = 1000;
 	[SerializeField] private Image cargoGauge;
 	[SerializeField] private float maxSpeed = 10.0f;
-	[SerializeField] private float slowSpeed = 5.0f;
+	[SerializeField] private float slowSpeed = 7.0f;
 	[SerializeField] private float maxInvincibilityTime = 2.0f;
 	[SerializeField] private float InvincibilityBlinkInterval = 0.2f;
 	[SerializeField] private float timeShaking = 0.5f;
 	[SerializeField] private GameManager gameManager;
-	[SerializeField] private AnimationClip explosionAnimation;
+	[SerializeField] private GameObject balloonModel;
+	[SerializeField] private AudioClip explosionSound;
+	[SerializeField] private AudioClip hitSound;
+	[SerializeField] private float timeScaleSlowDown = 0.7f;
 
 	private void Start()
 	{
+		myAudioSource = GetComponent<AudioSource>();
 		myRigidbody2D = GetComponent<Rigidbody2D>();
-		image = GetComponentInChildren<SpriteRenderer>();
 		vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
 		noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-		myAnimator = GetComponentInChildren<Animator>();
+		myAnimator = GetComponent<Animator>();
 
 		cargo = maxCargo;
 		speed = maxSpeed;
@@ -44,34 +49,46 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
-		Vector2 v = Vector2.up * Input.GetAxis("Vertical");
-		Vector2 h = Vector2.right * Input.GetAxis("Horizontal");
 		
-		//set speed to slow or max speed wether the related button has been pressed or released
-		if (Input.GetButton("Fire1"))
+		if (isAlive)
+		{
+			CheckSpecialActions();
+			Move();
+		}
+	}
+
+	//set timescale to slow or normal timescale if the related button has been pressed or released
+	// also adjusts the speed so that this action won't be abused
+	private void CheckSpecialActions()
+	{
+		if (Input.GetButtonDown("Fire1"))
 		{
 			speed = slowSpeed;
+			gameManager.SetTimeScaleTo(timeScaleSlowDown);
 		}
 		else if (Input.GetButtonUp("Fire1"))
 		{
 			speed = maxSpeed;
+			gameManager.SetTimeScaleTo(1.0f);
 		}
+	}
 
+	private void Move()
+	{
+		Vector2 v = Vector2.up * Input.GetAxis("Vertical");
+		Vector2 h = Vector2.right * Input.GetAxis("Horizontal");
 		Vector2 nextPos = (v + h) * speed * Time.deltaTime;
 		myRigidbody2D.MovePosition(transform.position + (Vector3) nextPos);
 	}
 
 	// Handle the "collision" between the player and enemy with the tag enemy
-	//there are no real collisions in this game, only triggers
+	// there are no real collisions in this game, only triggers
 	private void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Enemy") && !isInvincible)
+		if (other.gameObject.CompareTag("Enemy") && !isInvincible && isAlive)
 		{
 			Enemy enemy = other.gameObject.GetComponent<Enemy>();
-			int damageTaken = enemy.Damage;
-			ReleaseCargo(damageTaken);
-			StartCoroutine(SetShaking(damageTaken, damageTaken, timeShaking));
-			StartCoroutine(SetInvincibility(maxInvincibilityTime));
+			TakeDamage(enemy.Damage);
 
 			if (enemy.IsDestructibleByPlayer)
 			{
@@ -83,57 +100,86 @@ public class Player : MonoBehaviour
 	//handle the death of the player
 	private IEnumerator DeathPlayer()
 	{
+		gameManager.SetTimeScaleTo(1.0f);
+		isAlive = false;
 		myAnimator.SetTrigger("Death");
-		yield return new WaitForSeconds(explosionAnimation.length);
-		image.color = Color.clear;
+		myAudioSource.clip = explosionSound;
+		myAudioSource.loop = false;
+		myAudioSource.volume = 1.0f;
+		myAudioSource.Play();
+		balloonModel.SetActive(false);
+		yield return new WaitForSeconds(explosionSound.length);
 
 		Destroy(gameObject);
 		gameManager.GameOver();
 	}
-	
+
 	//handle when the player release some cargo
-	private void ReleaseCargo(int lest)
+	private void TakeDamage(int damage)
 	{
-		cargo -= lest;
-		if (cargo <= 0)
+		cargo -= damage;
+		cargoGauge.fillAmount = (float) cargo / maxCargo;
+		StartCoroutine(SetShaking(damage, damage, timeShaking));
+		if (cargo <= 0 && isAlive)
 		{
 			StartCoroutine(DeathPlayer());
 		}
-		
-		cargoGauge.fillAmount = (float) cargo / maxCargo;
+		else
+		{
+			StartCoroutine(SetInvincibility(maxInvincibilityTime));
+			StartCoroutine(PlaySound(hitSound));
+		}
+	}
+
+	// Play a sound then reverts to the sound playing before on the source
+	private IEnumerator PlaySound(AudioClip clip)
+	{
+		AudioClip originalClip = myAudioSource.clip;
+		bool originalIsLooping = myAudioSource.loop;
+		float originalVolume = myAudioSource.volume;
+		myAudioSource.clip = clip;
+		myAudioSource.loop = false;
+		myAudioSource.volume = 1.0f;
+		myAudioSource.Play();
+		yield return new WaitForSeconds(clip.length);
+		myAudioSource.clip = originalClip;
+		myAudioSource.loop = originalIsLooping;
+		myAudioSource.volume = originalVolume;
+		myAudioSource.Play();
 	}
 
 	//Handle the invincibility process and its blinking
 	private IEnumerator SetInvincibility(float time)
 	{
-		isInvincible = true;
-
-		for (float i = 0; i <= time; i += InvincibilityBlinkInterval)
+		if (isAlive)
 		{
-			//make the sprite of the player blink via changing the value of alpha channel
-			Color tempColor = image.color;
-			if (tempColor.a.CompareTo(1.0f) == 0)
+			isInvincible = true;
+
+			for (float i = 0; i <= time; i += InvincibilityBlinkInterval)
 			{
-				tempColor.a = 0.0f;
-			}
-			else
-			{
-				tempColor.a = 1.0f;
+				//make the sprite of the player blink via changing the value of alpha channel
+				if (balloonModel.activeInHierarchy)
+				{
+					balloonModel.SetActive(false);
+				}
+				else
+				{
+					balloonModel.SetActive(true);
+				}
+
+				yield return new WaitForSeconds(InvincibilityBlinkInterval);
 			}
 
-			image.color = tempColor;
-			yield return new WaitForSeconds(InvincibilityBlinkInterval);
+			balloonModel.SetActive(true);
+			isInvincible = false;
 		}
-		image.color = Color.white;
-
-		isInvincible = false;
 	}
 
 	private IEnumerator SetShaking(float amplitudeGain, float frequencyGain, float time)
 	{
-		ShakeCamera(amplitudeGain,frequencyGain);
+		ShakeCamera(amplitudeGain, frequencyGain);
 		yield return new WaitForSeconds(time);
-		ShakeCamera(0,0);
+		ShakeCamera(0, 0);
 	}
 
 	private void ShakeCamera(float amplitudeGain, float frequencyGain)

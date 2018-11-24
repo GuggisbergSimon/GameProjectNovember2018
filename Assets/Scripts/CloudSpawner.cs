@@ -12,6 +12,7 @@ public class CloudSpawner : MonoBehaviour
 	[SerializeField] private GameObject leftMaxPos;
 	[SerializeField] private GameObject rightMaxPos;
 
+	private bool isSpawning = false;
 	private GameObject currentCloud;
 
 	private void Start()
@@ -26,8 +27,17 @@ public class CloudSpawner : MonoBehaviour
 		StartCoroutine(Spawner());
 	}
 
+	private void Update()
+	{
+		if (!isSpawning)
+		{
+			StartCoroutine(Spawner());
+		}
+	}
+
 	private IEnumerator Spawner()
 	{
+		isSpawning = true;
 		yield return new WaitForSeconds(delayStart);
 
 		for (int i=0;;i++)
