@@ -20,14 +20,14 @@ public class Player : MonoBehaviour
 	[SerializeField] private int maxCargo = 1000;
 	[SerializeField] private Image cargoGauge;
 	[SerializeField] private float maxSpeed = 10.0f;
-	[SerializeField] private float slowSpeed = 5.0f;
+	[SerializeField] private float slowSpeed = 7.0f;
 	[SerializeField] private float maxInvincibilityTime = 2.0f;
 	[SerializeField] private float InvincibilityBlinkInterval = 0.2f;
 	[SerializeField] private float timeShaking = 0.5f;
 	[SerializeField] private GameManager gameManager;
-	[SerializeField] private AnimationClip explosionAnimation;
 	[SerializeField] private GameObject balloonModel;
 	[SerializeField] private AudioClip explosionSound;
+	[SerializeField] private AudioClip hitSound;
 	[SerializeField] private float timeScaleSlowDown = 0.7f;
 
 	private void Start()
@@ -49,9 +49,10 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
-		CheckSpecialActions();
+		
 		if (isAlive)
 		{
+			CheckSpecialActions();
 			Move();
 		}
 	}
@@ -61,12 +62,12 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Fire1"))
 		{
-			//speed = slowSpeed;
+			speed = slowSpeed;
 			Time.timeScale = timeScaleSlowDown;
 		}
 		else if (Input.GetButtonUp("Fire1"))
 		{
-			//speed = maxSpeed;
+			speed = maxSpeed;
 			Time.timeScale = 1.0f;
 		}
 	}
@@ -83,13 +84,10 @@ public class Player : MonoBehaviour
 	// there are no real collisions in this game, only triggers
 	private void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Enemy") && !isInvincible)
+		if (other.gameObject.CompareTag("Enemy") && !isInvincible && isAlive)
 		{
 			Enemy enemy = other.gameObject.GetComponent<Enemy>();
-			int damageTaken = enemy.Damage;
-			ReleaseCargo(damageTaken);
-			StartCoroutine(SetShaking(damageTaken, damageTaken, timeShaking));
-			StartCoroutine(SetInvincibility(maxInvincibilityTime));
+			TakeDamage(enemy.Damage);
 
 			if (enemy.IsDestructibleByPlayer)
 			{
@@ -101,6 +99,7 @@ public class Player : MonoBehaviour
 	//handle the death of the player
 	private IEnumerator DeathPlayer()
 	{
+		Time.timeScale = 1.0f;
 		isAlive = false;
 		myAnimator.SetTrigger("Death");
 		myAudioSource.clip = explosionSound;
@@ -108,22 +107,44 @@ public class Player : MonoBehaviour
 		myAudioSource.volume = 1.0f;
 		myAudioSource.Play();
 		balloonModel.SetActive(false);
-		yield return new WaitForSeconds(explosionAnimation.length);
+		yield return new WaitForSeconds(explosionSound.length);
 
 		Destroy(gameObject);
 		gameManager.GameOver();
 	}
 
 	//handle when the player release some cargo
-	private void ReleaseCargo(int lest)
+	private void TakeDamage(int damage)
 	{
-		cargo -= lest;
+		cargo -= damage;
+		cargoGauge.fillAmount = (float) cargo / maxCargo;
+		StartCoroutine(SetShaking(damage, damage, timeShaking));
 		if (cargo <= 0 && isAlive)
 		{
 			StartCoroutine(DeathPlayer());
 		}
+		else
+		{
+			StartCoroutine(SetInvincibility(maxInvincibilityTime));
+			StartCoroutine(PlaySound(hitSound));
+		}
+	}
 
-		cargoGauge.fillAmount = (float) cargo / maxCargo;
+	// Play a sound then reverts to the sound playing before on the source
+	private IEnumerator PlaySound(AudioClip clip)
+	{
+		AudioClip originalClip = myAudioSource.clip;
+		bool originalIsLooping = myAudioSource.loop;
+		float originalVolume = myAudioSource.volume;
+		myAudioSource.clip = clip;
+		myAudioSource.loop = false;
+		myAudioSource.volume = 1.0f;
+		myAudioSource.Play();
+		yield return new WaitForSeconds(clip.length);
+		myAudioSource.clip = originalClip;
+		myAudioSource.loop = originalIsLooping;
+		myAudioSource.volume = originalVolume;
+		myAudioSource.Play();
 	}
 
 	//Handle the invincibility process and its blinking
@@ -148,6 +169,7 @@ public class Player : MonoBehaviour
 				yield return new WaitForSeconds(InvincibilityBlinkInterval);
 			}
 
+			balloonModel.SetActive(true);
 			isInvincible = false;
 		}
 	}

@@ -614,18 +614,18 @@ AnimationClip:
     floatParameter: 0
     intParameter: 6
     messageOptions: 0
-  - time: 61.966667
+  - time: 62
     functionName: Fire
     data: 
-    objectReferenceParameter: {fileID: 1769039011591838, guid: 75472ede5f68fcb4c84ed0f8acc9e5e8,
+    objectReferenceParameter: {fileID: 1416268556104746, guid: 524e1a75d92202f488b1bfb31d1cb184,
       type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.133335
+  - time: 62
     functionName: Fire
     data: 
-    objectReferenceParameter: {fileID: 1416268556104746, guid: 524e1a75d92202f488b1bfb31d1cb184,
+    objectReferenceParameter: {fileID: 1769039011591838, guid: 75472ede5f68fcb4c84ed0f8acc9e5e8,
       type: 2}
     floatParameter: 0
     intParameter: 0
@@ -698,6 +698,13 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 1087197776483742, guid: 6bf60c26bb6029f46bfc528d01becb35,
       type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 80.13333
+    functionName: LoadLevel
+    data: EndMissionMenu
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

@@ -7,20 +7,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	private bool isPause = false;
-
-	[SerializeField] private GameObject[] patterns;
+	private AudioSource myAudioSource;
+	
 	[SerializeField] private GameObject panelPause;
-	[SerializeField] private float timeMax = 40;
 	[SerializeField] private CloudSpawner cloudSpawner;
+	[SerializeField] private AudioClip enablePause;
+	[SerializeField] private AudioClip disablePause;
+
+	private void Start()
+	{
+		myAudioSource = GetComponent<AudioSource>();
+	}
 
 	private void Update()
 	{
 		CheckPause();
-
-		if (Time.timeSinceLevelLoad > timeMax)
-		{
-			LoadLevel("EndMissionMenu");
-		}
 	}
 
 	//handles the pause system
@@ -34,13 +35,16 @@ public class GameManager : MonoBehaviour
 				Time.timeScale = 1;
 				panelPause.SetActive(false);
 				isPause = false;
-
+				myAudioSource.clip = disablePause;
+				myAudioSource.Play();
 			}
 			else
 			{
 				Time.timeScale = 0;
 				panelPause.SetActive(true);
 				isPause = true;
+				myAudioSource.clip = enablePause;
+				myAudioSource.Play();
 			}
 		}
 	}
