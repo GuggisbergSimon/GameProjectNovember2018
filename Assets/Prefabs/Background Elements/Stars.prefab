@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4762567581394532}
   - component: {fileID: 212636507718660418}
   - component: {fileID: 114347066823473934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cloudsresized_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4124392875062428}
   - component: {fileID: 114806320582923750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}

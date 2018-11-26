@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 	private Animator myAnimator;
 	private bool isAlive = true;
 
+	#region player variable
+
 	[SerializeField] private int maxCargo = 1000;
 	[SerializeField] private Image cargoGauge;
 	[SerializeField] private float maxSpeed = 10.0f;
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour
 	[SerializeField] private AudioClip hitSound;
 	[SerializeField] private float timeScaleSlowDown = 0.7f;
 	[SerializeField] private AnimationClip explosionAnimation;
+
+	#endregion
 
 	private void Start()
 	{
@@ -50,7 +54,6 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
-		
 		if (isAlive)
 		{
 			CheckSpecialActions();

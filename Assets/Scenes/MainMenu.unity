@@ -1335,7 +1335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 910, y: -83.041214}
+  m_AnchoredPosition: {x: 910, y: -83.04123}
   m_SizeDelta: {x: 1820, y: 166.08243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &537098057
@@ -2138,7 +2138,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
+  m_ForceIntoRT: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -2747,11 +2747,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Use the arrow keys/WASD keys or the left joystick to move your air balloon.
+  m_text: 'Use the arrow keys/WASD keys or the left joystick (on a gamepad) to move
+    your air balloon.
 
-    Use left Ctrl or RB to slow down time and avoid your enemies.
+    Use left Ctrl/right Shift or RB (on a gamepad) to slow down time and avoid your
+    enemies.
 
-    Use Space key/Enter key or A to pause the action and catch your breath.
+    Use Space key/Enter key or A (on a gamepad) to pause the action and catch your
+    breath.
 
     Use Escape key as a shortcut for alt-F4.'
   m_isRightToLeft: 0
@@ -2830,11 +2833,11 @@ MonoBehaviour:
     lineCount: 4
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3434,7 +3437,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1717035280}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3887,6 +3890,18 @@ Prefab:
     - target: {fileID: 4972963296091350, guid: 29f11a4111aa59b4b8d8606c936a7ed7, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432439932109658, guid: 29f11a4111aa59b4b8d8606c936a7ed7, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040253683918492, guid: 29f11a4111aa59b4b8d8606c936a7ed7, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208747846601918, guid: 29f11a4111aa59b4b8d8606c936a7ed7, type: 2}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29f11a4111aa59b4b8d8606c936a7ed7, type: 2}
