@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 	[SerializeField] private AudioClip explosionSound;
 	[SerializeField] private AudioClip hitSound;
 	[SerializeField] private float timeScaleSlowDown = 0.7f;
+	[SerializeField] private AnimationClip explosionAnimation;
 
 	private void Start()
 	{
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour
 		myAudioSource.volume = 1.0f;
 		myAudioSource.Play();
 		balloonModel.SetActive(false);
-		yield return new WaitForSeconds(explosionSound.length);
+		yield return new WaitForSeconds(explosionAnimation.length);
 
 		Destroy(gameObject);
 		gameManager.GameOver();
