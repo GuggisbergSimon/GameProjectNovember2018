@@ -115,6 +115,11 @@ public class Player : MonoBehaviour
 		gameManager.GameOver();
 	}
 
+	public bool IsAlive
+	{
+		get { return isAlive; }
+	}
+
 	//handle when the player release some cargo
 	private void TakeDamage(int damage)
 	{
