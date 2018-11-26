@@ -13,9 +13,11 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private CloudSpawner cloudSpawner;
 	[SerializeField] private AudioClip enablePause;
 	[SerializeField] private AudioClip disablePause;
+	[SerializeField] private Player player;
 
 	private void Start()
 	{
+		player = FindObjectOfType<Player>();
 		myAudioSource = GetComponent<AudioSource>();
 	}
 
@@ -68,7 +70,10 @@ public class GameManager : MonoBehaviour
 
 	public void LoadLevel(string name)
 	{
-		SceneManager.LoadScene(name);
+		if (player.IsAlive)
+		{
+			SceneManager.LoadScene(name);
+		}
 	}
 
 	public void GameOver()
