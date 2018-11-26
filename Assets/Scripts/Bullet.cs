@@ -21,7 +21,6 @@ public class Bullet : Enemy
 
 	private new void Update()
 	{
-		base.Update();
 		if (canMove)
 		{
 			SinMove();

@@ -22,7 +22,6 @@ public class Launcher : Enemy
 
 	private new void Update()
 	{
-		base.Update();
 		if (canMove)
 		{
 			timer += Time.deltaTime;

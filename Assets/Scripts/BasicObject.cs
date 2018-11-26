@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class BasicObject : MonoBehaviour
 {
-	private CheckRenderer myCheckRenderer;
+	private bool hasWaited = false;
+
+	[SerializeField] private float timeAllowedOutsideOutWindow = 0.5f;
 
 	protected void Start()
 	{
-		myCheckRenderer = GetComponentInChildren<CheckRenderer>();
+		StartCoroutine(Wait(timeAllowedOutsideOutWindow));
+	}
+	
+	private IEnumerator Wait(float time)
+	{
+		yield return new WaitForSeconds(time);
+		hasWaited = true;
 	}
 
-	protected bool CheckInvisibility()
+	private void OnBecameInvisible()
 	{
-		return myCheckRenderer.CheckInvisibility();
-	}
-
-	protected void Update()
-	{
-		if (myCheckRenderer.IsInvisible)
+		if (hasWaited)
 		{
 			Destroy(gameObject);
 		}

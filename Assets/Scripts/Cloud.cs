@@ -23,7 +23,6 @@ public class Cloud : BasicObject
 
 	private new void Update()
 	{
-		base.Update();
 		transform.position = transform.position + Vector3.down * speed * Time.deltaTime;
 	}
 
