@@ -39,7 +39,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4637003931510976}
   - component: {fileID: 212351793870146242}
-  - component: {fileID: 114052919900899822}
   m_Layer: 0
   m_Name: white
   m_TagString: Untagged
@@ -296,17 +295,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &114052919900899822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1775381497650750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e86d1121f4f1f40be7059aa811acc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114813528481584930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d27e40f8905378498797b340aa1c174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAllowedOutsideOutWindow: 0.5
   damage: 10
   delayTime: 1
   isDestructibleByPlayer: 0

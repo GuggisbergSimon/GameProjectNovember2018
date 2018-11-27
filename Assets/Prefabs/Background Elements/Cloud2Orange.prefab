@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4259700074233346}
   - component: {fileID: 212582875186621518}
-  - component: {fileID: 114500647041421712}
   m_Layer: 0
   m_Name: Cloudsresized_0
   m_TagString: Untagged
@@ -175,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a1682e0128bf54e8134b28c3c341f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAllowedOutsideOutWindow: 0.5
   sprites:
   - {fileID: 21300000, guid: e0cec17b25a43bf42ba1493c608a1123, type: 3}
   - {fileID: 21300002, guid: e0cec17b25a43bf42ba1493c608a1123, type: 3}
@@ -185,18 +185,7 @@ MonoBehaviour:
   - {fileID: 21300018, guid: e0cec17b25a43bf42ba1493c608a1123, type: 3}
   - {fileID: 21300022, guid: e0cec17b25a43bf42ba1493c608a1123, type: 3}
   speed: 15
-  margeSpeed: 3
---- !u!114 &114500647041421712
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1118158561519822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e86d1121f4f1f40be7059aa811acc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  rangeSpeed: 2
 --- !u!212 &212582875186621518
 SpriteRenderer:
   m_ObjectHideFlags: 1

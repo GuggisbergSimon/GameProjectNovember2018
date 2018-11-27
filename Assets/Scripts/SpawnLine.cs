@@ -26,6 +26,7 @@ public class SpawnLine : MonoBehaviour
 			{
 				FireSingle(i);
 			}
+			Destroy(gameObject);
 		}
 	}
 
@@ -37,6 +38,7 @@ public class SpawnLine : MonoBehaviour
 			FireSingle(i);
 			yield return new WaitForSeconds(time);
 		}
+		Destroy(gameObject);
 	}
 
 

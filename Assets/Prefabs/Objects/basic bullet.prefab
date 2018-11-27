@@ -39,7 +39,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4395008609843634}
   - component: {fileID: 212184604433379994}
-  - component: {fileID: 114036279775892310}
   m_Layer: 0
   m_Name: sprite
   m_TagString: Untagged
@@ -296,17 +295,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &114036279775892310
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1844374543751084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e86d1121f4f1f40be7059aa811acc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114043092941786666
 MonoBehaviour:
   m_ObjectHideFlags: 1
