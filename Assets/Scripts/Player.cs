@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
-using UnityEngine.Experimental.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
+	#region player variables
+
 	private AudioSource myAudioSource;
 	private Rigidbody2D myRigidbody2D;
 	private bool isInvincible = false;
@@ -31,6 +32,8 @@ public class Player : MonoBehaviour
 	[SerializeField] private float timeScaleSlowDown = 0.7f;
 	[SerializeField] private AnimationClip explosionAnimation;
 
+	#endregion
+
 	private void Start()
 	{
 		myAudioSource = GetComponent<AudioSource>();
@@ -47,10 +50,8 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	// Update is called once per frame
 	private void Update()
 	{
-		
 		if (isAlive)
 		{
 			CheckSpecialActions();

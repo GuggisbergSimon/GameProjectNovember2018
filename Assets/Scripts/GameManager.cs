@@ -70,9 +70,14 @@ public class GameManager : MonoBehaviour
 
 	public void LoadLevel(string name)
 	{
+		SceneManager.LoadScene(name);
+	}
+
+	public void EndLevel()
+	{
 		if (player.IsAlive)
 		{
-			SceneManager.LoadScene(name);
+			LoadLevel("EndMissionMenu");
 		}
 	}
 

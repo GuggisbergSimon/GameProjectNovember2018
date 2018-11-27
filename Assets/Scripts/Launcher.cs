@@ -10,19 +10,18 @@ public class Launcher : Enemy
 	[SerializeField] private float fireRatePerSeconds = 1.8f;
 	[SerializeField] private bool noAngleLimit = false;
 
-	private float initAngle;
+	private float initialAngle;
 	private bool isLaunching = false;
 	private float timer = 0.0f;
 
 	private new void Start()
 	{
 		base.Start();
-		initAngle = transform.rotation.eulerAngles.z;
+		initialAngle = transform.rotation.eulerAngles.z;
 	}
 
-	private new void Update()
+	private void Update()
 	{
-		base.Update();
 		if (canMove)
 		{
 			timer += Time.deltaTime;
@@ -31,7 +30,7 @@ public class Launcher : Enemy
 			{
 				phase = Time.timeSinceLevelLoad*periodRotation;
 			}
-			transform.localRotation = Quaternion.Euler(new Vector3(0, 0, initAngle + (phase * maxAngleRotation)));
+			transform.localRotation = Quaternion.Euler(new Vector3(0, 0, initialAngle + (phase * maxAngleRotation)));
 			if (!isLaunching)
 			{
 				StartCoroutine(Fire(1 / fireRatePerSeconds));

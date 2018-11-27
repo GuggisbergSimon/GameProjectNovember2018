@@ -7,23 +7,25 @@ public class Cloud : BasicObject
 {
 	[SerializeField] private Sprite[] sprites;
 	[SerializeField] private float speed = 10;
-	[SerializeField] private float margeSpeed = 2;
+	[SerializeField] private float rangeSpeed = 2;
 
 	private SpriteRenderer mySpriteRender;
 
-	//Select a random mesh between the ones given in the inspector
+
 	private new void Start()
 	{
 		base.Start();
 		mySpriteRender = GetComponentInChildren<SpriteRenderer>();
+
 		ChangeSprite(Random.Range(0, sprites.Length - 1));
-		speed += Random.Range(-margeSpeed, margeSpeed);
+		speed += Random.Range(-rangeSpeed, rangeSpeed);
+
+		//objects closer seem to be moving faster
 		mySpriteRender.sortingOrder = (int) speed;
 	}
 
-	private new void Update()
+	private void Update()
 	{
-		base.Update();
 		transform.position = transform.position + Vector3.down * speed * Time.deltaTime;
 	}
 
@@ -36,7 +38,7 @@ public class Cloud : BasicObject
 		}
 		else
 		{
-			Debug.Log("ChangeSprite : wrong index entered");
+			Debug.Log("ChangeSprite : wrong index for cloud sprite entered");
 		}
 	}
 }
