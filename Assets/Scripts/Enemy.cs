@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//basic class defining how enemies act and interact
 public class Enemy : BasicObject
 {
 	[SerializeField] private int damage = 10;

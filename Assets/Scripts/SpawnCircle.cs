@@ -11,12 +11,12 @@ public class SpawnCircle : MonoBehaviour
 	[SerializeField] private float interval;
 	[SerializeField] private Player player;
 
-	private Vector3 playerPosInit;
+	private Vector3 initialPlayerPos;
 
 	private void Start()
 	{
 		player = FindObjectOfType<Player>();
-		playerPosInit = player.transform.position;
+		initialPlayerPos = player.transform.position;
 
 		if (interval > 0)
 		{
@@ -44,7 +44,7 @@ public class SpawnCircle : MonoBehaviour
 	//Fire and then rotate this object
 	private void FireSingle()
 	{
-		Instantiate(bulletPrefab,playerPosInit + transform.up * -radius, transform.rotation);
+		Instantiate(bulletPrefab,initialPlayerPos + transform.up * -radius, transform.rotation);
 		transform.Rotate(transform.forward, (float) 360 / numberShots);
 	}
 }

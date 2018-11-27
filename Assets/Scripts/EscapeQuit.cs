@@ -8,7 +8,7 @@ public class EscapeQuit : MonoBehaviour
 
 	private void Start()
 	{
-		//keep only one globalmanager in each scene
+		//keep only one instance of this object in each scene
 		if (checkStatic == null)
 		{
 			DontDestroyOnLoad(gameObject);

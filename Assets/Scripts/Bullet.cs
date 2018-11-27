@@ -19,7 +19,7 @@ public class Bullet : Enemy
 		initialAxis = transform.right;
 	}
 
-	private new void Update()
+	private void Update()
 	{
 		if (canMove)
 		{
@@ -27,7 +27,7 @@ public class Bullet : Enemy
 			timer += Time.deltaTime;
 		}
 	}
-
+	
 	private void SinMove()
 	{
 		initialPosition += transform.up * Time.deltaTime * horizontalSpeed;

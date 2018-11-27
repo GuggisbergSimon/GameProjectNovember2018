@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
-using UnityEngine.Experimental.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
+	#region player variables
+
 	private AudioSource myAudioSource;
 	private Rigidbody2D myRigidbody2D;
 	private bool isInvincible = false;
@@ -16,8 +17,6 @@ public class Player : MonoBehaviour
 	private CinemachineBasicMultiChannelPerlin noise;
 	private Animator myAnimator;
 	private bool isAlive = true;
-
-	#region player variable
 
 	[SerializeField] private int maxCargo = 1000;
 	[SerializeField] private Image cargoGauge;
@@ -51,7 +50,6 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	// Update is called once per frame
 	private void Update()
 	{
 		if (isAlive)
