@@ -28,6 +28,7 @@ public class SpawnCircle : MonoBehaviour
 			{
 				FireSingle();
 			}
+			Destroy(gameObject);
 		}
 	}
 
@@ -39,6 +40,8 @@ public class SpawnCircle : MonoBehaviour
 			FireSingle();
 			yield return new WaitForSeconds(time);
 		}
+
+		Destroy(gameObject);
 	}
 
 	//Fire and then rotate this object

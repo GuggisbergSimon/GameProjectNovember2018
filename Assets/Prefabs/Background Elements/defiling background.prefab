@@ -35,7 +35,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4611265059198884}
   - component: {fileID: 212367628265749394}
-  - component: {fileID: 114465286583767090}
   m_Layer: 0
   m_Name: background_grad
   m_TagString: Untagged
@@ -70,17 +69,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114465286583767090
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785329298899232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e86d1121f4f1f40be7059aa811acc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212367628265749394
 SpriteRenderer:
   m_ObjectHideFlags: 1
